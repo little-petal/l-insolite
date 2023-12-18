@@ -15,4 +15,22 @@ if (process.env.NODE_ENV === 'production') {
   prisma = global.prisma;
 }
 
-export default prisma;
+export async function searchAllItems() {
+    const items = await prisma.item.findMany({
+      });
+      return items;
+};
+
+export async function searchItemsToDisplay() {
+    const items = await prisma.item.findMany({
+        where : { published: true },
+      });
+      return items;
+};
+
+export async function searchOneItem(itemId: number) {
+    const items = await prisma.item.findFirst({
+        where : { id: itemId},
+      });
+      return items;
+};
