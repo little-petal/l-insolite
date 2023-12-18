@@ -1,0 +1,35 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model Item {
+  id            Int       @default(autoincrement()) @id
+  title         String
+  description   String?
+  price         Decimal?  @db.Money
+  type          Type
+  published     Boolean   @default(false)
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime? @updatedAt @map(name: "updated_at")
+  images        String[]
+}
+
+enum Type {
+  ASSISE
+  LUMINAIRE
+  MOBILIER
+  RADIO
+  VAISSELLE
+  HORLOGE
+  MIROIR
+  DIVERS
+  FABRICATION
+}
