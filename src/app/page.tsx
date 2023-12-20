@@ -8,16 +8,18 @@ export default async function Home() {
   const items = await searchAllItems();
 
   return (
-    <main className='bg-red-800'>
-      <Header>L&lsquo;insolite</Header>
-      <div className="flex justify-start space-x-1 h-screen bg-cover bg-center bg-no-repeat bg-landing-page">
-        <div className='flex absolute bottom-16'>
-          <a className="flex text-amber-50" href="#nav-products">
-            v Voir nos articles
-          </a>
+    <main className='bg-amber-50'>
+      <section id="nav-landing-page" className='h-screen bg-cover bg-center bg-no-repeat bg-landing-page flex flex-col snap-start'>
+        <Header>L&lsquo;insolite</Header>
+        <div className="flex justify-start space-x-1">
+          <div className='flex absolute bottom-16'>
+            <a className="flex text-amber-50" href="#nav-products">
+              v Voir nos articles
+            </a>
+          </div>
         </div>
-      </div>
-      <section id="nav-products">
+      </section>
+      <section id="nav-products" className='xl:h-screen snap-start'>
         <div className='container mx-auto p-6'>
           <p className='text-6xl'>Nos articles</p>
           <div className="flex flex-wrap">
@@ -29,7 +31,9 @@ export default async function Home() {
           </div>  
         </div>
       </section>
+      <section id="nav-about-us" className='snap-start'>
       <Footer/>
+      </section>
     </main>
   )
 }
