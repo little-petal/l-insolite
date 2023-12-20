@@ -19,7 +19,7 @@ export default async function Home() {
           </div>
         </div>
       </section>
-      <section id="nav-products" className='xl:h-screen snap-start'>
+      <section id="nav-products" className='xl:h-screen snap-start snap-stop'>
         <div className='container mx-auto p-6'>
           <p className='text-5xl lg:text-6xl font-georgia'>Nos articles</p>
           <div className="flex flex-wrap">
