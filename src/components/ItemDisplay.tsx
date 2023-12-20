@@ -18,11 +18,11 @@ export const ItemDisplay = ({title, description, price, type, images}: Props) =>
                 </div>
                 {/* <img className="h-screen bg-cover bg-center bg-no-repeat bg-landing-page" src={images[0]} alt="" /> */}
                 <div className="grow flex flex-col space-y-4">
-                    <h2>{title}</h2>
-                    <h5>{description}</h5>
+                    <p className="font-georgia text-xl">{title}</p>
+                    <p className="font-georgia">{description}</p>
                 </div>
                 <div className="self-end p-1 max-w-max bg-stone-300 rounded-md">
-                    <h4>{price + "€"}</h4>
+                    <p className="font-inter">{price + "€"}</p>
                 </div>
             </div>
         </div> 

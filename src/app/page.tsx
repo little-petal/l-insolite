@@ -9,19 +9,19 @@ export default async function Home() {
 
   return (
     <main className='bg-amber-50'>
-      <section id="nav-landing-page" className='h-screen bg-cover bg-center bg-no-repeat bg-landing-page flex flex-col snap-start'>
+      <section id="nav-landing-page" className='h-screen bg-cover bg-center bg-no-repeat bg-landing-page-sm md:bg-landing-page-md flex flex-col snap-start'>
         <Header>L&lsquo;insolite</Header>
-        <div className="flex justify-start space-x-1">
-          <div className='flex absolute bottom-16'>
+        <div className="flex justify-center md:justify-start space-x-1">
+          <div className='flex absolute md:left-16 bottom-16'>
             <a className="flex text-amber-50" href="#nav-products">
-              v Voir nos articles
+            <i className="fa-sharp fa-solid fa-angle-down fa-fade fa-xl md:fa-2xl">Voir nos articles</i>
             </a>
           </div>
         </div>
       </section>
       <section id="nav-products" className='xl:h-screen snap-start'>
         <div className='container mx-auto p-6'>
-          <p className='text-6xl'>Nos articles</p>
+          <p className='text-5xl lg:text-6xl font-georgia'>Nos articles</p>
           <div className="flex flex-wrap">
             {items?.map((item) => 
                 <div key={item.title} className="p-3 min-h-50 w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/4">

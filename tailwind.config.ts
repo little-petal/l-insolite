@@ -9,8 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        'landing-page': "url('/assets/images/landing-page.jpg')"
+        'landing-page-md': "url('/assets/images/landing-page-md.jpg')",
+        'landing-page-sm': "url('/assets/images/landing-page-sm.jpg')"
       },
+      fontFamily: {
+        // 'georgia': ['Georgia'],
+        'georgia': ['Cambria'],
+        'inter': ['Inter']
+      }
     },
   },
   plugins: [],
