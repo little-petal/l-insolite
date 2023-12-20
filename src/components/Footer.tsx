@@ -13,7 +13,7 @@ export const Footer = () => {
             <div className="basis-1/2 md:basis-1/4 flex justify-end space-x-1">
                 <Link
                 href="/login"
-                className="flex items-center gap-5 self-start rounded-lg bg-stone-300 px-6 py-3 text-sm font-inter transition-colors hover:bg-blue-400 md:text-base"
+                className="flex items-center gap-5 self-start rounded-lg bg-stone-300 px-6 py-3 text-sm font-inter transition-colors hover:bg-stone-500 md:text-base"
                 >
                     <span>Log in</span> <ArrowRightIcon className="w-5 md:w-6" />
                 </Link>

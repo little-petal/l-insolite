@@ -13,7 +13,7 @@ export default async function Home() {
         <Header>L&lsquo;insolite</Header>
         <div className="flex justify-center md:justify-start space-x-1">
           <div className='flex absolute md:left-16 bottom-16'>
-            <a className="flex text-amber-50" href="#nav-products">
+            <a className="flex text-stone-300" href="#nav-products">
               <i className="fa-sharp fa-solid fa-angle-down fa-fade fa-xl md:fa-2xl">Voir nos articles</i>
             </a>
           </div>
@@ -30,6 +30,7 @@ export default async function Home() {
             )}
           </div>  
         </div>
+        <div bg-sky-500></div>
       </section>
       <section id="nav-about-us" className='snap-start'>
       <Footer/>

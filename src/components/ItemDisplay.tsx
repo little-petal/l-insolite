@@ -11,7 +11,7 @@ interface Props {
 /* bg-red-300 sm:bg-orange-300 md:bg-yellow-200 lg:bg-green-300 xl:bg-teal-300 2xl:bg-sky-300 3xl:bg-violet-300 */
 export const ItemDisplay = ({title, description, price, type, images}: Props) => {
     return (
-        <div className="relative p-3 h-full bg-amber-100">
+        <div className="relative p-3 h-full bg-stone-200">
             <div className="flex flex-col space-y-4 content-between h-full">
                 <div className="flex justify-center bg-green-100">
                     <img className="object-cover sm:h-80 sm:w-80" src={images[0]} alt="" />
