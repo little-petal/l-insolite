@@ -6,7 +6,7 @@ interface Props {
 
 export const Header = ({children}: Props) => {
     return  (
-        <div className="flex flex-row relative bg-red-900 md:bg-green-900 lg:bg-sky-900">
+        <div className="flex flex-row relative bg-red-900">
             <div className="basis-1/2 md:basis-1/4 p-5 font-georgia md:font-inter">
                 <p className='text-xl lg:text-2xl'>L&lsquo;INSOLITE</p>
                 <p className='text-sm lg:text-base'>Mobilier vintage et objets insolites</p>

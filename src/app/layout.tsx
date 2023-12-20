@@ -16,9 +16,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" className='scroll-smooth snap-mandatory snap-y overflow-x-hidden'>
-      <head>
-        <script src="https://kit.fontawesome.com/43f55b62d7.js" crossOrigin="anonymous"></script>
-      </head>
       <body className={inter.className}>{children}</body>
     </html>
   )
