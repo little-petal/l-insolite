@@ -13,9 +13,13 @@ export const ItemsSection = ({ items }: Props) => {
   const [selectedItems, setSelectedItems] = useState<Item[]>(items);
 
   function filterItems(type: string) {
-    const i = selectedItems.find((x) => x.type === type);
-    setSelectedItems(items.filter((x) => (x.type as string) === type));
-    console.log(type);
+    if (type === "ALL")
+    {
+      setSelectedItems(items);
+    } else {
+      const i = selectedItems.find((x) => x.type === type);
+      setSelectedItems(items.filter((x) => (x.type as string) === type));
+    }
   }
 
   return (
@@ -39,15 +43,16 @@ export const ItemsSection = ({ items }: Props) => {
           ))}
         </div>
       </div>
-      <div className="flex flex-wrap md:flex-row justify-center content-end space-x-6 h32 md:h-16 bg-stone-200/70 sticky bottom-0 left-0 right-0">
-        <div className="flex space-x-6">
+      <div className="flex flex-wrap sm:flex-nowrap md:flex-row justify-center content-end space-x-0 sm:space-x-3 md:space-x-6 h16 md:h-16 bg-stone-200/70 sticky bottom-0 left-0 right-0">
+        <div className="flex space-x-6 sm:space-x-3 md:space-x-6">
+          <Filter type="ALL" filter={filterItems} />
           <Filter type="ASSISE" filter={filterItems} />
           <Filter type="LUMINAIRE" filter={filterItems} />
           <Filter type="MOBILIER" filter={filterItems} />
           <Filter type="RADIO" filter={filterItems} />
-          <Filter type="VAISSELLE" filter={filterItems} />
         </div>
-        <div className="flex space-x-6">
+        <div className="flex space-x-6 sm:space-x-3 md:space-x-6">
+          <Filter type="VAISSELLE" filter={filterItems} />
           <Filter type="HORLOGE" filter={filterItems} />
           <Filter type="MIROIR" filter={filterItems} />
           <Filter type="DIVERS" filter={filterItems} />
