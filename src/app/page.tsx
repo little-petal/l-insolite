@@ -1,6 +1,6 @@
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
-import { ItemDisplay } from '@/components/ItemDisplay'
+import { ItemsSection } from '@/components/ItemsSection';
 import { searchAllItems } from '../lib/prisma';
 
 export default async function Home() {
@@ -19,19 +19,7 @@ export default async function Home() {
           </div>
         </div>
       </section>
-      <section id="nav-products" className='xl:h-screen snap-start snap-stop'>
-        <div className='container mx-auto p-6'>
-          <p className='text-5xl lg:text-6xl font-georgia'>Nos articles</p>
-          <div className="flex flex-wrap">
-            {items?.map((item) => 
-                <div key={item.title} className="p-3 min-h-50 w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/4">
-                    <ItemDisplay title={item.title} description={item.description} price={item.price} type={item.type} images={item.images}/>
-                </div>
-            )}
-          </div>  
-        </div>
-        <div bg-sky-500></div>
-      </section>
+      <ItemsSection items={items}/>
       <section id="nav-about-us" className='snap-start'>
       <Footer/>
       </section>

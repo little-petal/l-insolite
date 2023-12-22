@@ -9,7 +9,9 @@ export const Footer = () => {
                 <p className='text-sm lg:text-base'>Mobilier vintage et objets insolites</p>
                 <p className='text-sm lg:text-base'>07 97 51 17 99</p>
             </div>
-            <div className="basis-0 md:basis-1/2 flex justify-center"></div>
+            <div className="basis-0 md:basis-1/2 flex justify-center flex item-stretch">
+                <a className="self-end" href="https://www.flaticon.com/free-icons" title="lamp icons">Icons created by Freepik - Flaticon</a>
+            </div>
             <div className="basis-1/2 md:basis-1/4 flex justify-end space-x-1">
                 <Link
                 href="/login"
