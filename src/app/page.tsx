@@ -1,11 +1,10 @@
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { ItemsSection } from '@/components/ItemsSection';
-import { searchAllItems } from '../lib/prisma';
+import { searchItemsToDisplay } from '../lib/prisma';
 
 export default async function Home() {
-
-  const items = await searchAllItems();
+  const items = await searchItemsToDisplay();
 
   return (
     <main className='bg-amber-50'>
