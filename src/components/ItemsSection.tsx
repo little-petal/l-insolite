@@ -24,7 +24,7 @@ export const ItemsSection = ({ items }: Props) => {
 
   return (
     <div className="relative">
-      <div className="container mx-auto p-6 xl:h-screen">
+      <div className="container mx-auto p-6 xl:h-min-screen snap-always snap-start">
         <p className="text-5xl lg:text-6xl font-georgia p-2">Nos articles</p>
         <div className="flex flex-wrap">
           {selectedItems?.map((item) => (
@@ -43,7 +43,7 @@ export const ItemsSection = ({ items }: Props) => {
           ))}
         </div>
       </div>
-      <div className="flex flex-wrap sm:flex-nowrap md:flex-row justify-center content-end space-x-0 sm:space-x-3 md:space-x-6 h16 md:h-16 bg-stone-200/70 sticky bottom-0 left-0 right-0">
+      <div className="flex flex-wrap sm:flex-nowrap md:flex-row justify-center content-end space-x-0 sm:space-x-3 md:space-x-6 h16 md:h-16 bg-stone-200/70 sticky bottom-0 left-0 right-0 snap-always snap-end">
         <div className="flex space-x-6 sm:space-x-3 md:space-x-6">
           <Filter type="ALL" filter={filterItems} />
           <Filter type="ASSISE" filter={filterItems} />
