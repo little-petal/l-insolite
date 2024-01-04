@@ -8,7 +8,7 @@ export default async function Home() {
 
   return (
     <main className='bg-amber-50'>
-      <section id="nav-landing-page" className='h-screen bg-cover bg-center bg-no-repeat bg-landing-page-sm md:bg-landing-page-md flex flex-col snap-start'>
+      <section id="nav-landing-page" className='h-screen bg-cover bg-center bg-no-repeat bg-landing-page-sm md:bg-landing-page-md flex flex-col snap-always snap-start'>
         <Header>L&lsquo;insolite</Header>
         <div className="flex justify-center md:justify-start space-x-1">
           <div className='flex absolute md:left-16 bottom-16'>
@@ -18,7 +18,7 @@ export default async function Home() {
           </div>
         </div>
       </section>
-      <section id="nav-products" className="snap-always snap-start">
+      <section id="nav-products">
       <ItemsSection items={items}/>
       </section>
       <section id="nav-footer" className="bg-stone-400 relative h-screen snap-always snap-end flex flex-col">
