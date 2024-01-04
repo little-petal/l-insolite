@@ -23,9 +23,9 @@ export const ItemsSection = ({ items }: Props) => {
   }
 
   return (
-    <section id="nav-products" className="snap-start snap-stop relative">
+    <div className="relative">
       <div className="container mx-auto p-6 xl:h-screen">
-        <p className="text-5xl lg:text-6xl font-georgia">Nos articles</p>
+        <p className="text-5xl lg:text-6xl font-georgia p-2">Nos articles</p>
         <div className="flex flex-wrap">
           {selectedItems?.map((item) => (
             <div
@@ -59,6 +59,6 @@ export const ItemsSection = ({ items }: Props) => {
           <Filter type="FABRICATION" filter={filterItems} />
         </div>
       </div>
-    </section>
+    </div>
   );
 };

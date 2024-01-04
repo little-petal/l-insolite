@@ -41,13 +41,13 @@ export const ItemForm = ({ item, onSubmit }: Props) => {
   return (
     <form className="flex flex-col space-y-3" method="post" onSubmit={handleSubmit}>
       <label className="flex flex-col">
-        Titre de l'article: <input type="text" name="title" defaultValue={item?.title}/>
+        Titre de l&lsquo;article: <input type="text" name="title" defaultValue={item?.title}/>
       </label>
       <label className="flex flex-col">
-        Description de l'article: <input type="text" name="description" defaultValue={item?.description ?? ""}/>
+        Description de l&lsquo;article: <input type="text" name="description" defaultValue={item?.description ?? ""}/>
       </label>
       <label className="flex flex-col">
-        Prix de l'article: <input type="number" name="price" defaultValue={item?.price?.toString()}/>
+        Prix de l&lsquo;article: <input type="number" name="price" defaultValue={item?.price?.toString()}/>
       </label>
       <div className="flex flex-row space-x-3">
         <p>Type:</p>
@@ -69,7 +69,7 @@ export const ItemForm = ({ item, onSubmit }: Props) => {
            <input type="checkbox" name="published" defaultChecked={item?.published} />
         </label>
       </div>
-      <button className="bg-sky-500 p-4" type="submit">Enregistrer l'article</button>
+      <button className="bg-sky-500 p-4" type="submit">Enregistrer l&lsquo;article</button>
     </form>
     )
 }

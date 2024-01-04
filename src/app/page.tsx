@@ -18,9 +18,22 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      <section id="nav-products" className="snap-always snap-start">
       <ItemsSection items={items}/>
-      <section id="nav-about-us" className='snap-start'>
-      <Footer/>
+      </section>
+      <section id="nav-footer" className="bg-stone-400 relative h-screen snap-always snap-end flex flex-col">
+        <p className="flex justify-center text-5xl lg:text-6xl font-georgia p-6">Qui sommes-nous ?</p>
+        <div className="flex flex-wrap justify-center items-center md:flex-row h-full w-full">
+          <div className="lg:basis-1/3 font-georgia flex flex-col justify-center p-6">
+            <p className='flex justify-center'>Boutique l&lsquo;Insolite</p>
+            <p className='flex justify-center'>JukeBox - Flipper - Antiquités - Objets insolites</p>
+            <p className='flex justify-center'>Achat et vente - Rénovation</p>
+          </div>
+          <div className="lg:basis-2/3 flex justify-center">
+            <img className="object-cover" src="/assets/images/about-us.jpg" alt="" />
+          </div>
+        </div>
+        <Footer/>
       </section>
     </main>
   )

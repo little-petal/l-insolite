@@ -1,5 +1,5 @@
 import { Information } from "./Information"
-import { SocialNetwork } from "./SocialNetwork"
+import { Icon } from "./Icon"
 
 interface Props {
     children: React.ReactNode
@@ -15,9 +15,9 @@ export const Header = ({children}: Props) => {
                 <img className="relative w-full max-w-lg absolute -bottom-16" src="/assets/images/logo.jpg" alt="" />
             </div>
             <div className="basis-1/2 md:basis-1/4 flex justify-end space-x-1 p-5">
-                <SocialNetwork src="facebook" link="https://www.facebook.com/bmcreation.ch/?locale=fr_FR"/>
-                <SocialNetwork src="instagram" link="https://instagram.com"/>
-                <SocialNetwork src="email" link=""/>
+                <Icon src="facebook" link="https://www.facebook.com/bmcreation.ch/?locale=fr_FR"/>
+                <Icon src="email" link=""/>
+                <Icon src="go-down" link="#nav-footer"/>
             </div>
         </div>
     )
