@@ -5,6 +5,7 @@ import Link from 'next/link';
 export default async function Dashboard() {
 
   const items = await searchAllItems();
+  console.log("ITEMS DASHBOARD :" + items)
   
   return (
     <main>
