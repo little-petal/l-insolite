@@ -5,7 +5,7 @@ import { Item } from '@prisma/client';
 
 export default async function Home() {
   
-  const ir = await fetch(process.env.NEXT_PUBLIC_SITE_URL+"/api/items", { cache: 'no-store' });
+  const ir = await fetch(process.env.NEXT_PUBLIC_SITE_URL+"/api/items", { cache: 'no-store', credentials: "same-origin" });
   console.log("IR STATUS"+ir.status);
   console.log("IR BODY"+ir.body);
   console.log("IR URL"+ir.url);
@@ -14,7 +14,7 @@ export default async function Home() {
   const id = await ir.json();
   console.log("ID"+id);
 
-  const items = await fetch(process.env.NEXT_PUBLIC_SITE_URL+"/api/items", { cache: 'no-store' }).then((res) => res.json() as Promise<Item[]>);
+  const items = await fetch(process.env.NEXT_PUBLIC_SITE_URL+"/api/items", { cache: 'no-store', credentials: "same-origin" }).then((res) => res.json() as Promise<Item[]>);
   console.log("Home"+items);
 
   return (
