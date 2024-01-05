@@ -1,11 +1,11 @@
 import { searchAllItems } from '../../lib/prisma';
 import Header from '@/components/dashboard/Header';
 import Link from 'next/link';
+import { unstable_noStore as noStore } from 'next/cache';
 
 export default async function Dashboard() {
-
-  const items = await searchAllItems();
-  console.log("ITEMS DASHBOARD :" + items)
+  noStore();
+  let items = await searchAllItems();
   
   return (
     <main>
