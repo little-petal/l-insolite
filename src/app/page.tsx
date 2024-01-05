@@ -5,23 +5,27 @@ import { Item } from '@prisma/client';
 
 export default async function Home() {
   
-  const ir = await fetch(process.env.NEXT_PUBLIC_SITE_URL+"/api/items", { cache: 'no-store', credentials: "same-origin" });
-  console.log("IR STATUS"+ir.status);
-  console.log("IR BODY"+ir.body);
-  console.log("IR URL"+ir.url);
-  console.log("IR HEADERS"+ir.headers.entries());
+  // const ir = await fetch(process.env.NEXT_PUBLIC_SITE_URL+"/api/items", { cache: 'no-store', credentials: "same-origin" });
+  // console.log("IR STATUS"+ir.status);
+  // console.log("IR BODY"+ir.body);
+  // console.log("IR URL"+ir.url);
+  // console.log("IR HEADERS"+ir.headers.entries());
 
-  if (ir.status != 200)
-  {
-    return(
-      <div>No result</div>
-    )
-  }
-  const id = await ir.json();
-  console.log("ID"+id);
+  // if (ir.status != 200)
+  // {
+  //   return(
+  //     <div>No result</div>
+  //   )
+  // }
+  // const id = await ir.json();
+  // console.log("ID"+id);
 
-  const items = await fetch(process.env.NEXT_PUBLIC_SITE_URL+"/api/items", { cache: 'no-store', credentials: "same-origin" }).then((res) => res.json() as Promise<Item[]>);
-  console.log("Home"+items);
+  // const items = await fetch(process.env.NEXT_PUBLIC_SITE_URL+"/api/items", { cache: 'no-store', credentials: "same-origin" }).then((res) => res.json() as Promise<Item[]>);
+  // console.log("Home"+items);
+  // let i = fetch(process.env.NEXT_PUBLIC_SITE_URL+"/api/items", { cache: 'no-store' }).then((res) => res.json() as Promise<Item[]>);
+  // // const items = await searchItemsToDisplay();
+  // let itemsObject = use<Item[]>(i);
+  // let items = Object.values(itemsObject);
 
   return (
     <main className='bg-amber-50'>
@@ -36,7 +40,7 @@ export default async function Home() {
         </div>
       </section>
       <section id="nav-products">
-        <ItemsSection items={items} />
+        <ItemsSection />
       </section>
       <section id="nav-footer" className="bg-stone-400 relative h-screen snap-always snap-end flex flex-col">
         <p className="flex justify-center text-5xl lg:text-6xl font-georgia p-6">Qui sommes-nous ?</p>

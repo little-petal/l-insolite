@@ -3,13 +3,19 @@
 import { ItemDisplay } from "./ItemDisplay";
 import { Filter } from "./Filter";
 import { Item } from "@prisma/client";
-import { Suspense, useState } from "react";
+import { Suspense, use, useState } from "react";
+import { searchAllItems } from "@/lib/prisma";
 
-interface Props {
-  items: Item[];
-}
+// const getItems = () =>
+//   fetch(process.env.NEXT_PUBLIC_SITE_URL+"/api/items").then((res) => res.json() as Promise<Item[]>);
 
-export const ItemsSection = ({ items }: Props) => {
+export const ItemsSection = () => {
+  let promisedItems = searchAllItems();
+  let items = use<Item[]>(promisedItems);
+
+  // let itemsObject = use<Item[]>(getItems());
+  // let items = Object.values(itemsObject);
+
   const [selectedItems, setSelectedItems] = useState(items as Item[]);
 
   function filterItems(type: string) {
