@@ -11,6 +11,12 @@ export default async function Home() {
   console.log("IR URL"+ir.url);
   console.log("IR HEADERS"+ir.headers.entries());
 
+  if (ir.status != 200)
+  {
+    return(
+      <div>No result</div>
+    )
+  }
   const id = await ir.json();
   console.log("ID"+id);
 
