@@ -5,8 +5,13 @@ import { Item } from '@prisma/client';
 
 export default async function Home() {
   
-  const items = await fetch(process.env.NEXT_PUBLIC_SITE_URL+"/api/items", { cache: 'no-store' })
-  .then((res) => res.json() as Promise<Item[]>);
+  const ir = await fetch(process.env.NEXT_PUBLIC_SITE_URL+"/api/items", { cache: 'no-store' });
+  console.log("IR"+ir);
+  const id = await ir.json();
+  console.log("ID"+id);
+
+  const items = await fetch(process.env.NEXT_PUBLIC_SITE_URL+"/api/items", { cache: 'no-store' }).then((res) => res.json() as Promise<Item[]>);
+  console.log("Home"+items);
 
   return (
     <main className='bg-amber-50'>

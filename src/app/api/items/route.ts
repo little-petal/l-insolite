@@ -3,7 +3,9 @@ import { Item } from "@prisma/client";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
+  console.log("resquest :" + request);
   const items = await searchItemsToDisplay();
-  
+  console.log("ITEMS IN ROUTE"+items);
+
   return NextResponse.json<Item[]>(items)
 }
