@@ -1,11 +1,9 @@
-import { prisma } from "@/lib/prisma";
+import { searchItemsToDisplay } from "@/lib/prisma";
 import { Item } from "@prisma/client";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
-  const items = await prisma.item.findMany({
-    where : { published: true },
-  });
+  const items = await searchItemsToDisplay();
   
   return NextResponse.json<Item[]>(items)
 }
