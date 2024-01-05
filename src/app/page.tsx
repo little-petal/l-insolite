@@ -1,7 +1,9 @@
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { ItemsSection } from '@/components/ItemsSection';
+import { searchItemsToDisplay } from '@/lib/prisma';
 import { Item } from '@prisma/client';
+import { unstable_noStore as noStore } from 'next/cache';
 
 export default async function Home() {
   
@@ -26,6 +28,9 @@ export default async function Home() {
   // // const items = await searchItemsToDisplay();
   // let itemsObject = use<Item[]>(i);
   // let items = Object.values(itemsObject);
+  
+  noStore();
+  let items = await searchItemsToDisplay();
 
   return (
     <main className='bg-amber-50'>
@@ -40,7 +45,7 @@ export default async function Home() {
         </div>
       </section>
       <section id="nav-products">
-        <ItemsSection />
+        <ItemsSection items={items}/>
       </section>
       <section id="nav-footer" className="bg-stone-400 relative h-screen snap-always snap-end flex flex-col">
         <p className="flex justify-center text-5xl lg:text-6xl font-georgia p-6">Qui sommes-nous ?</p>
