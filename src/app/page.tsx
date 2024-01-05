@@ -1,6 +1,6 @@
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
-import ItemsSection from '@/components/ItemsSection';
+import { ItemsSection } from '@/components/ItemsSection';
 import { Item } from '@prisma/client';
 
 export default async function Home() {
