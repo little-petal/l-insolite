@@ -6,7 +6,11 @@ import { Item } from '@prisma/client';
 export default async function Home() {
   
   const ir = await fetch(process.env.NEXT_PUBLIC_SITE_URL+"/api/items", { cache: 'no-store' });
-  console.log("IR"+ir);
+  console.log("IR STATUS"+ir.status);
+  console.log("IR BODY"+ir.body);
+  console.log("IR URL"+ir.url);
+  console.log("IR HEADERS"+ir.headers.entries());
+
   const id = await ir.json();
   console.log("ID"+id);
 
