@@ -14,7 +14,7 @@ export const ItemDisplay = ({title, description, price, type, images}: Props) =>
         <div className="relative p-3 h-full bg-stone-200">
             <div className="flex flex-col space-y-4 content-between h-full">
                 <div className="flex justify-center bg-green-100">
-                    <img className="object-cover sm:h-80 sm:w-80" src={images[0]} alt="" />
+                    <img className="object-cover sm:h-80 sm:w-80" src={images ? images[0] : "assets/images/image-not-found.jpg"} alt="" />
                 </div>
                 {/* <img className="h-screen bg-cover bg-center bg-no-repeat bg-landing-page" src={images[0]} alt="" /> */}
                 <div className="grow flex flex-col space-y-4">

@@ -1,13 +1,12 @@
-'use client'
-
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
-import { ItemsSection } from '@/components/ItemsSection';
-import { searchItemsToDisplay } from '../lib/prisma';
-import { Suspense } from 'react';
+import ItemsSection from '@/components/ItemsSection';
+import { Item } from '@prisma/client';
 
 export default async function Home() {
-  const items = await searchItemsToDisplay();
+  
+  const items = await fetch(process.env.NEXT_PUBLIC_SITE_URL+"/api/items", { cache: 'no-store' })
+  .then((res) => res.json() as Promise<Item[]>);
 
   return (
     <main className='bg-amber-50'>
@@ -22,9 +21,7 @@ export default async function Home() {
         </div>
       </section>
       <section id="nav-products">
-      <Suspense fallback={<div>Loading...</div>}>
         <ItemsSection items={items} />
-      </Suspense>
       </section>
       <section id="nav-footer" className="bg-stone-400 relative h-screen snap-always snap-end flex flex-col">
         <p className="flex justify-center text-5xl lg:text-6xl font-georgia p-6">Qui sommes-nous ?</p>
