@@ -9,11 +9,13 @@ import { upload } from "@vercel/blob/client";
 interface Props {
   item: Item | null;
   onSubmit: any;
+  isCreation: boolean;
 }
 
-export const ItemForm = ({ item, onSubmit }: Props) => {
+export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [blob, setBlob] = useState<PutBlobResult | null>(null);
+  const [message, setMessage] = useState<string | null>(null);
   
   async function handleSubmit(e: any) {
     e.preventDefault();
@@ -25,14 +27,22 @@ export const ItemForm = ({ item, onSubmit }: Props) => {
     }
 
     const file = inputFileRef.current.files[0];
-    const newBlob = await upload(file.name, file, {
-      access: 'public',
-      handleUploadUrl: '/api/dashboard',
-    });
 
-    setBlob(newBlob);
-
-    onSubmit(convertFormDataToWriteItem(formData, newBlob.url));
+    if (file)
+    {
+      const newBlob = await upload(file.name, file, {
+        access: 'public',
+        handleUploadUrl: '/api/dashboard',
+      });
+  
+      setBlob(newBlob);
+      
+      onSubmit(convertFormDataToWriteItem(formData, newBlob.url));
+      
+    } else {
+      onSubmit(convertFormDataToWriteItem(formData, item?.images[0] ?? ""));
+    }
+    setMessage(isCreation ? "L'article a bien été créé." : "L'article a bien été modifié.")
   }
 
   function convertFormDataToWriteItem(formData: FormData, filename : string): WriteItem {
@@ -60,13 +70,13 @@ export const ItemForm = ({ item, onSubmit }: Props) => {
     <>
       <form className="flex flex-col space-y-3" method="post" onSubmit={handleSubmit}>
         <label className="flex flex-col">
-          Titre de l&lsquo;article: <input type="text" name="title" defaultValue={item?.title}/>
+          Titre de l&lsquo;article: <input type="text" name="title" defaultValue={item?.title} required={isCreation}/>
         </label>
         <label className="flex flex-col">
-          Description de l&lsquo;article: <input type="text" name="description" defaultValue={item?.description ?? ""}/>
+          Description de l&lsquo;article: <input type="text" name="description" defaultValue={item?.description ?? ""} required={isCreation}/>
         </label>
         <label className="flex flex-col">
-          Prix de l&lsquo;article: <input type="number" name="price" defaultValue={item?.price?.toString()}/>
+          Prix de l&lsquo;article: <input type="number" name="price" defaultValue={item?.price?.toString()} required={isCreation}/>
         </label>
         <div className="flex flex-row space-x-3">
           <p>Type:</p>
@@ -85,17 +95,23 @@ export const ItemForm = ({ item, onSubmit }: Props) => {
         <div className="flex flex-row space-x-3">
           <p>Publier ?</p>
           <label className="flex flex-row space-x-3">
-            <input type="checkbox" name="published" defaultChecked={item?.published} />
+            <input type="checkbox" name="published" defaultChecked={item?.published} required={isCreation}/>
           </label>
         </div>
         <div className="flex flex-row space-x-3">
           <p>Importer une image :</p>
+          <div className="p-3 min-h-50 w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/4">
+            <img className="object-cover sm:h-48 sm:w-48" src={item?.images[0]} alt="" />
+          </div>
           <label className="flex flex-row space-x-3">
-            <input name="file" ref={inputFileRef} type="file" required />
+            <input name="file" ref={inputFileRef} type="file" required={isCreation}/>
           </label>
         </div>
-        <button className="bg-sky-500 p-4" type="submit">Enregistrer l&lsquo;article</button>
+        <button className="bg-orange-200 border border-orange-600 p-4" type="submit">Enregistrer l&lsquo;article</button>
       </form>
+      {message && (
+        <div>{message}</div>
+      )}
       {blob && (
         <div>
           Blob url: <a href={blob.url}>{blob.url}</a>

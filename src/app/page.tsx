@@ -1,10 +1,12 @@
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { ItemsSection } from '@/components/ItemsSection';
-import { searchItemsToDisplay } from '../lib/prisma';
+import { searchItemsToDisplay } from '@/lib/prisma';
+import { unstable_noStore as noStore } from 'next/cache';
 
 export default async function Home() {
-  const items = await searchItemsToDisplay();
+  noStore();
+  let items = await searchItemsToDisplay();
 
   return (
     <main className='bg-amber-50'>
@@ -19,15 +21,15 @@ export default async function Home() {
         </div>
       </section>
       <section id="nav-products">
-      <ItemsSection items={items}/>
+        <ItemsSection items={items}/>
       </section>
       <section id="nav-footer" className="bg-stone-400 relative h-screen snap-always snap-end flex flex-col">
         <p className="flex justify-center text-5xl lg:text-6xl font-georgia p-6">Qui sommes-nous ?</p>
         <div className="flex flex-wrap justify-center items-center md:flex-row h-full w-full">
           <div className="lg:basis-1/3 font-georgia flex flex-col justify-center p-6">
-            <p className='flex justify-center'>Boutique l&lsquo;Insolite</p>
-            <p className='flex justify-center'>JukeBox - Flipper - Antiquités - Objets insolites</p>
-            <p className='flex justify-center'>Achat et vente - Rénovation</p>
+            <p className='flex justify-center text-xl lg:text-2xl'>Boutique l&lsquo;Insolite</p>
+            <p className='flex justify-center text-xl lg:text-2xl'>JukeBox - Flipper - Antiquités - Objets insolites</p>
+            <p className='flex justify-center text-xl lg:text-2xl'>Achat et vente - Rénovation</p>
           </div>
           <div className="lg:basis-2/3 flex justify-center">
             <img className="object-cover" src="/assets/images/about-us.jpg" alt="" />
