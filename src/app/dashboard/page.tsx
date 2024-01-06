@@ -19,7 +19,7 @@ export default async function Dashboard() {
       </div>
       <div className='h-screen p-5 bg-emerald-200'>
         <div className="flex flex-col">
-            {items?.map((item) => (
+            {items?.sort((a, b) => (Number(a.createdAt) - Number(b.createdAt)))?.map((item) => (
             <div
               key={item.title}
               className="w-full flex flex-row justify-between m-2 bg-emerald-300"
