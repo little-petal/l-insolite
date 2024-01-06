@@ -1,5 +1,5 @@
 import { ItemForm } from '@/components/dashboard/ItemForm';
-import Header from '@/components/dashboard/Header';
+import { Header } from '@/components/dashboard/Header';
 import { searchOneItem, updateOneItem } from '@/lib/prisma';
 import { WriteItem } from '@/types/WriteItem';
 
@@ -18,10 +18,12 @@ export default async function Update({params }: Props) {
 
   return (
     <main>
-      <Header/>
-        <div className="bg-green-300 p-5">
-          <ItemForm item={item} onSubmit={updateItem}/>
+      <div className='h-screen'>
+        <Header isMainPage={false} />
+        <div className="bg-emerald-200 h-full p-5">
+          <ItemForm item={item} onSubmit={updateItem} isCreation={false}/>
         </div>
+      </div>
     </main>
   )
 }

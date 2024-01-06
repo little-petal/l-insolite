@@ -9,15 +9,8 @@ import { searchAllItems } from "@/lib/prisma";
 interface Props {
   items: Item[];
 }
-// const getItems = () =>
-//   fetch(process.env.NEXT_PUBLIC_SITE_URL+"/api/items").then((res) => res.json() as Promise<Item[]>);
 
 export const ItemsSection = ({ items }: Props) => {
-  // let promisedItems = searchAllItems();
-  // let items = use<Item[]>(promisedItems);
-
-  // let itemsObject = use<Item[]>(getItems());
-  // let items = Object.values(itemsObject);
 
   const [selectedItems, setSelectedItems] = useState(items as Item[]);
 
@@ -37,7 +30,7 @@ export const ItemsSection = ({ items }: Props) => {
         <p className="text-5xl lg:text-6xl font-georgia p-2">Nos articles</p>
         <div className="flex flex-wrap">
           <Suspense fallback={<div>Loading...</div>}>
-            {selectedItems?.map((item) => (
+            {selectedItems?.sort((a, b) => (Number(a.createdAt) - Number(b.createdAt)))?.map((item) => (
               <div
                 key={item.id}
                 className="p-3 min-h-50 w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/4"

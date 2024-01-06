@@ -2,33 +2,9 @@ import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { ItemsSection } from '@/components/ItemsSection';
 import { searchItemsToDisplay } from '@/lib/prisma';
-import { Item } from '@prisma/client';
 import { unstable_noStore as noStore } from 'next/cache';
 
 export default async function Home() {
-  
-  // const ir = await fetch(process.env.NEXT_PUBLIC_SITE_URL+"/api/items", { cache: 'no-store', credentials: "same-origin" });
-  // console.log("IR STATUS"+ir.status);
-  // console.log("IR BODY"+ir.body);
-  // console.log("IR URL"+ir.url);
-  // console.log("IR HEADERS"+ir.headers.entries());
-
-  // if (ir.status != 200)
-  // {
-  //   return(
-  //     <div>No result</div>
-  //   )
-  // }
-  // const id = await ir.json();
-  // console.log("ID"+id);
-
-  // const items = await fetch(process.env.NEXT_PUBLIC_SITE_URL+"/api/items", { cache: 'no-store', credentials: "same-origin" }).then((res) => res.json() as Promise<Item[]>);
-  // console.log("Home"+items);
-  // let i = fetch(process.env.NEXT_PUBLIC_SITE_URL+"/api/items", { cache: 'no-store' }).then((res) => res.json() as Promise<Item[]>);
-  // // const items = await searchItemsToDisplay();
-  // let itemsObject = use<Item[]>(i);
-  // let items = Object.values(itemsObject);
-  
   noStore();
   let items = await searchItemsToDisplay();
 

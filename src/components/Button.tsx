@@ -6,8 +6,8 @@ interface Props {
   children?: React.ReactNode
 }
 
-export const Button = ({ children, onClick }: Props) => {
+export const Button = ({ children, onClick, className }: Props) => {
   return (
-      <button className="bg-sky-500 p-4" onClick={async () => onClick()}>{children}</button>
+      <button className={className} onClick={async () => onClick()}>{children}</button>
     )
 }
