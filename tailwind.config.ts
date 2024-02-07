@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import withMT from '@material-tailwind/react/utils/withMT';
 
 const config: Config = {
   content: [
@@ -16,9 +17,15 @@ const config: Config = {
         // 'georgia': ['Georgia'],
         'georgia': ['Cambria'],
         'inter': ['Inter']
+      },
+      color: {
+        'sable' : '#d4cbc6',
+      },
+      textColor: {
+        'sable' : '#d4cbc6',
       }
     },
   },
   plugins: [],
 }
-export default config
+export default withMT(config);
