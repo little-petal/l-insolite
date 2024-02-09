@@ -4,7 +4,7 @@ interface Props {
 
 export const Header = ({ isMainPage }: Props) => {
   return (
-      <div className="flex flex-row bg-emerald-600">
+      <div className="flex flex-row bg-emerald-dark">
         <div className="basis-1/5 flex justify-start self-center p-5">
           {!isMainPage &&
             <button>

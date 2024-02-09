@@ -14,7 +14,7 @@ export default async function Create() {
   return (
     <main>
       <Header isMainPage={false}/>
-        <div className="bg-emerald-200 h-screen p-5">
+        <div className="bg-emerald-light h-screen p-5">
           <ItemForm item={null} onSubmit={createItem} isCreation={true}/>
         </div>
     </main>

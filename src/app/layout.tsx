@@ -15,9 +15,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className='scroll-smooth snap-mandatory snap-y overflow-x-hidden'>
+    <html lang="fr" className='w-screen scroll-smooth snap-mandatory snap-y overflow-x-hidden'>
       <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css"></link>
+        <link rel="" href="https://www.flaticon.com/fr/icones-gratuites"></link>
       </head>
       <body className={inter.className}>{children}</body>
     </html>

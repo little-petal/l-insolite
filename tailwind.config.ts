@@ -18,8 +18,14 @@ const config: Config = {
         'georgia': ['Cambria'],
         'inter': ['Inter']
       },
-      color: {
+      colors: {
         'sable' : '#d4cbc6',
+        'stone-light' : '#e7e5e4',
+        'stone-medium' : '#d6d3d1',
+        'stone-dark' : '#a8a29e',
+        'emerald-light' : '#a7f3d0',
+        'emerald-medium' : '#6ee7b7',
+        'emerald-dark' : '#059669',
       },
       textColor: {
         'sable' : '#d4cbc6',

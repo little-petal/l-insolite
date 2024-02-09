@@ -20,7 +20,7 @@ export default async function Update({params }: Props) {
     <main>
       <div className='h-screen'>
         <Header isMainPage={false} />
-        <div className="bg-emerald-200 h-full p-5">
+        <div className="bg-emerald-light h-full p-5">
           <ItemForm item={item} onSubmit={updateItem} isCreation={false}/>
         </div>
       </div>

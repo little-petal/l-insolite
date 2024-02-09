@@ -1,5 +1,5 @@
 interface Props {
-    type: "ALL" | "ASSISE" | "LUMINAIRE" | "MOBILIER" | "RADIO" | "VAISSELLE" | "HORLOGE" | "MIROIR" | "DIVERS" | "FABRICATION"
+    type: "ALL" | "TABLEAU" | "LUMINAIRE" | "CHAISE" | "MOBILIER" | "ELECTRONIQUE" | "JEUX" | "MIROIR" | "DIVERS" | "FABRICATION"
     filter: any
 }
 

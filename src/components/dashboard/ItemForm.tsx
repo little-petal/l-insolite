@@ -81,12 +81,12 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
         <div className="flex flex-row space-x-3">
           <p>Type:</p>
           <div className="flex flex-col space-y-3">
-            <label><input type="radio" name="type" value="ASSISE" defaultChecked={item?.type == "ASSISE"} /> Assise</label>
+            <label><input type="radio" name="type" value="TABLEAU" defaultChecked={item?.type == "TABLEAU"} /> Tableau</label>
             <label><input type="radio" name="type" value="LUMINAIRE" defaultChecked={item?.type == "LUMINAIRE"} /> Luminaire</label>
+            <label><input type="radio" name="type" value="CHAISE" defaultChecked={item?.type == "CHAISE"} /> Chaise</label>
             <label><input type="radio" name="type" value="MOBILIER" defaultChecked={item?.type == "MOBILIER"} /> Mobilier</label>
-            <label><input type="radio" name="type" value="RADIO" defaultChecked={item?.type == "RADIO"} /> Radio</label>
-            <label><input type="radio" name="type" value="VAISSELLE" defaultChecked={item?.type == "VAISSELLE"} /> Vaiselle</label>
-            <label><input type="radio" name="type" value="HORLOGE" defaultChecked={item?.type == "HORLOGE"} /> Horloge</label>
+            <label><input type="radio" name="type" value="ELECTRONIQUE" defaultChecked={item?.type == "ELECTRONIQUE"} /> Electronique</label>
+            <label><input type="radio" name="type" value="JEUX" defaultChecked={item?.type == "JEUX"} /> Jeux</label>
             <label><input type="radio" name="type" value="MIROIR" defaultChecked={item?.type == "MIROIR"} /> Miroir</label>
             <label><input type="radio" name="type" value="DIVERS" defaultChecked={item?.type == "DIVERS"} /> Divers</label>
             <label><input type="radio" name="type" value="FABRICATION" defaultChecked={item?.type == "FABRICATION"} /> Fabrication</label>

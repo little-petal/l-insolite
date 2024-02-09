@@ -17,7 +17,7 @@ export default async function Delete({ params }: Props) {
   return (
     <main>
       <Header isMainPage={false}/>
-      <div className="flex flex-col h-screen bg-emerald-200 p-5">
+      <div className="flex flex-col h-screen bg-emerald-light p-5">
         <p className='flex justify-center'>Voulez-vous vraiment supprimer cette article définitivement ?</p>
         <div className='flex flex-row justify-center space-x-2'>
           <Button className="bg-orange-200 border border-orange-600 p-4" onClick={deleteItem}>Oui</Button>

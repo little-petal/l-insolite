@@ -10,7 +10,6 @@ export const Footer = () => {
               <Information/>
             </div>
             <div className="invisible md:visible basis-0 md:basis-1/2 flex justify-center flex item-stretch">
-                <a className="self-end text-xs" href="https://www.flaticon.com/free-icons" title="lamp icons">Icons created by Freepik - Flaticon</a>
             </div>
             <div className="basis-1/2 md:basis-1/4 flex justify-end space-x-1 items-center">
                 <Link href="/dashboard">
