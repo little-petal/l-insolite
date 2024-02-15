@@ -25,17 +25,25 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
         const data = new FormData();
         data.set('file', file);
   
-        const res = await fetch('/api/upload', {
+        const post = await fetch('/api/upload', {
           method: 'POST',
           body: data
         });
   
-        const response: { fileName: string } = await res.json();
+        const response: { fileName: string } = await post.json();
   
         onSubmit(convertFormDataToWriteItem(formData, response.fileName));
 
+        if (!isCreation)
+        {
+          await fetch('/api/upload', {
+            method: 'DELETE',
+            body: JSON.stringify({ fileName: item?.images[0] }),
+          });
+        }
+
         // Handle the error
-        if(!res.ok) throw new Error(await res.text())
+        if (!post.ok) throw new Error(await post.text())
       } catch (e: any) {
         // Handle the error here
         console.error(e);
@@ -102,7 +110,7 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
         <div className="flex flex-row space-x-3">
           <p>Importer une image :</p>
           <div className="p-3 min-h-50 w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/4">
-            <img className="object-cover sm:h-48 sm:w-48" src={"/assets/images/uploads/" + item?.images[0]} alt="" />
+            <img className="object-cover sm:h-48 sm:w-48" src={"/uploads/" + item?.images[0]} alt="" />
           </div>
           <label className="flex flex-row space-x-3">
             {/* <input name="file" ref={inputFileRef} type="file" required={isCreation}/> */}
