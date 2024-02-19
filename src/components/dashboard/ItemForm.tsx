@@ -114,7 +114,7 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
           </div>
           <label className="flex flex-row space-x-3">
             {/* <input name="file" ref={inputFileRef} type="file" required={isCreation}/> */}
-            <input type="file" name="file" accept="image/*" onChange={(e) => setFile(e.target.files?.[0])} required={isCreation} />
+            <input type="file" name="file" accept="image/*" capture onChange={(e) => setFile(e.target.files?.[0])} required={isCreation} />
           </label>
         </div>
         <button className="bg-orange-200 border border-orange-600 p-4" type="submit">Enregistrer l&lsquo;article</button>
