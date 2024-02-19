@@ -107,14 +107,14 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
             <input type="checkbox" name="published" defaultChecked={item?.published} required={isCreation}/>
           </label>
         </div>
-        <div className="flex flex-row space-x-3">
+        <div className="flex flex-col md:flex-row space-x-3">
           <p>Importer une image :</p>
           <div className="p-3 min-h-50 w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/4">
-            <img className="object-cover sm:h-48 sm:w-48" src={"/uploads/" + item?.images[0]} alt="" />
+            <img className="object-cover h-24 w-24 sm:h-48 sm:w-48" src={"/uploads/" + item?.images[0]} alt="" />
           </div>
           <label className="flex flex-row space-x-3">
             {/* <input name="file" ref={inputFileRef} type="file" required={isCreation}/> */}
-            <input type="file" name="file" onChange={(e) => setFile(e.target.files?.[0])} required={isCreation} />
+            <input type="file" name="file" accept="image/*" onChange={(e) => setFile(e.target.files?.[0])} required={isCreation} />
           </label>
         </div>
         <button className="bg-orange-200 border border-orange-600 p-4" type="submit">Enregistrer l&lsquo;article</button>
