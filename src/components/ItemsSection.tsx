@@ -1,10 +1,9 @@
-"use client";
+'use client'
 
 import { ItemDisplay } from "./ItemDisplay";
 import { Filter } from "./Filter";
 import { Item } from "@prisma/client";
-import { Suspense, use, useState } from "react";
-import { searchAllItems } from "@/lib/prisma";
+import { Suspense, useState } from "react";
 
 interface Props {
   items: Item[] | null;
@@ -27,8 +26,13 @@ export const ItemsSection = ({ items }: Props) => {
 
   return (
     <div className="relative">
-      <div className="container mx-auto p-6 xl:h-min-screen snap-always snap-start">
-        <p className="text-5xl lg:text-6xl font-georgia p-2">Nos articles</p>
+      <div className="container mx-auto p-6 min-h-screen snap-always snap-start">
+        <p className="text-4xl sm:text-5xl lg:text-6xl font-georgia p-2">Nos articles</p>
+        {!selectedItems || selectedItems.length == 0 && 
+          <div className="flex w-full h-full py-60 justify-center">
+            <p className="text-2xl sm:text-3xl lg:text-4xl font-inter p-2 text-center">Aucun article disponible.</p>
+          </div>
+        }
         <div className="flex flex-wrap">
           {selectedItems &&
             <Suspense fallback={<div>Loading...</div>}>
@@ -47,9 +51,6 @@ export const ItemsSection = ({ items }: Props) => {
                 </div>
               ))}
             </Suspense>
-          }
-          {!selectedItems && 
-            <div className="justify-center content-center">Aucun article</div>
           }
         </div>
       </div>
