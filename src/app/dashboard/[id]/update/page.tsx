@@ -17,12 +17,10 @@ export default async function Update({params }: Props) {
   }
 
   return (
-    <main>
-      <div className='h-screen'>
-        <Header isMainPage={false} />
-        <div className="bg-emerald-light h-full p-5">
-          <ItemForm item={item} onSubmit={updateItem} isCreation={false}/>
-        </div>
+    <main className='bg-emerald-light min-h-screen'>
+      <Header isMainPage={false} isRegister={false}/>
+      <div className="h-full p-5">
+        <ItemForm item={item} onSubmit={updateItem} isCreation={false}/>
       </div>
     </main>
   )

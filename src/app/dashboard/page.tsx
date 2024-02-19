@@ -8,16 +8,16 @@ export default async function Dashboard() {
   let items = await searchAllItems();
   
   return (
-    <main>
-      <Header isMainPage={true}/>
-      <div className='flex p-6 bg-emerald-light'>
+    <main className='bg-emerald-light min-h-screen'>
+      <Header isMainPage={true} isRegister={false}/>
+      <div className='flex p-6'>
         <Link 
           className="bg-orange-200 border border-orange-600 p-6"
           href={'/dashboard/create'}
           >Créer un article
         </Link>
       </div>
-      <div className='h-screen p-5 bg-emerald-light'>
+      <div className='p-5'>
         <div className="flex flex-col">
             {items?.sort((a, b) => (Number(a.createdAt) - Number(b.createdAt)))?.map((item) => (
             <div

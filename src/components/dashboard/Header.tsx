@@ -1,8 +1,9 @@
 interface Props {
   isMainPage: boolean;
+  isRegister: boolean;
 }
 
-export const Header = ({ isMainPage }: Props) => {
+export const Header = ({ isMainPage, isRegister }: Props) => {
   return (
       <div className="flex flex-row bg-emerald-dark">
         <div className="basis-1/5 flex justify-start self-center p-5">
@@ -13,7 +14,7 @@ export const Header = ({ isMainPage }: Props) => {
           }
         </div>
         <div className="basis-4/5 flex justify-center self-center p-5">
-          <p className='text-2xl lg:text-3xl'>L&lsquo;insolite - Tableau de bord</p>
+          <p className='text-2xl lg:text-3xl'>L&lsquo;insolite - {isRegister ? "Connexion" : "Tableau de bord"}</p>
         </div>
         <div className="basis-1/5 flex justify-end self-center p-5">
           {isMainPage &&

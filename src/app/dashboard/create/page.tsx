@@ -12,11 +12,11 @@ export default async function Create() {
   
 
   return (
-    <main>
-      <Header isMainPage={false}/>
-        <div className="bg-emerald-light h-screen p-5">
-          <ItemForm item={null} onSubmit={createItem} isCreation={true}/>
-        </div>
+    <main className='bg-emerald-light min-h-screen'>
+      <Header isMainPage={false} isRegister={false}/>
+      <div className="p-5">
+        <ItemForm item={null} onSubmit={createItem} isCreation={true}/>
+      </div>
     </main>
   )
 }
