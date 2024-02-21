@@ -3,6 +3,7 @@ import { Header } from '@/components/dashboard/Header';
 import { deleteOneItem, searchOneItem } from '@/lib/prisma';
 import { headers } from "next/headers";
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 interface Props {
   params: any;
@@ -12,16 +13,21 @@ export default async function Delete({ params }: Props) {
   const deleteItem = async () => {
     'use server'
 
-    const item = await searchOneItem(parseInt(params.id));
-  
-    const host = headers().get("host");
+    try {
+      const item = await searchOneItem(parseInt(params.id));
 
-    await fetch(`http://${host}/api/upload`, {
-      method: 'DELETE',
-      body: JSON.stringify({ fileName: item?.images[0] }),
-    }); 
-  
-    await deleteOneItem(parseInt(params.id));
+      const host = headers().get("host");
+      await fetch(`http://${host}/api/upload`, {
+        method: 'DELETE',
+        body: JSON.stringify({ fileName: item?.images[0] }),
+      }); 
+
+      await deleteOneItem(parseInt(params.id));
+    } catch (e) {
+      console.error("Delete failed", e);
+    } finally {
+      redirect('/dashboard');
+    }
   }
 
   return (

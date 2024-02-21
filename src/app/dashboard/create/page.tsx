@@ -2,15 +2,21 @@ import { ItemForm } from '@/components/dashboard/ItemForm';
 import { Header } from '@/components/dashboard/Header';
 import { WriteItem } from '@/types/WriteItem';
 import { createOneItem } from '@/lib/prisma';
+import { redirect } from 'next/navigation';
 
 export default async function Create() {
   const createItem = async (item: WriteItem) => {
     'use server'
 
-    await createOneItem(item);
+    try {
+      await createOneItem(item);
+    } catch (e) {
+      console.error("Creation failed", e);
+    } finally {
+      redirect('/dashboard');
+    }
   }
   
-
   return (
     <main className='bg-emerald-light min-h-screen'>
       <Header isMainPage={false} isRegister={false}/>

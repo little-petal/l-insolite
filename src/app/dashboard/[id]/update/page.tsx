@@ -2,6 +2,7 @@ import { ItemForm } from '@/components/dashboard/ItemForm';
 import { Header } from '@/components/dashboard/Header';
 import { searchOneItem, updateOneItem } from '@/lib/prisma';
 import { WriteItem } from '@/types/WriteItem';
+import { redirect } from 'next/navigation';
 
 interface Props {
   params: any;
@@ -13,7 +14,13 @@ export default async function Update({params }: Props) {
   const updateItem = async (item: WriteItem) => {
     'use server'
 
-    await updateOneItem(parseInt(params.id), item);
+    try {
+      await updateOneItem(parseInt(params.id), item);
+    } catch (e) {
+      console.error("Update failed", e);
+    } finally {
+      redirect('/dashboard');
+    }
   }
 
   return (
