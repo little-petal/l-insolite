@@ -16,10 +16,15 @@ export default async function Delete({ params }: Props) {
     try {
       const item = await searchOneItem(parseInt(params.id));
 
+      const dataToDelete = new FormData()
+      for (const fileName of item.images) {
+        dataToDelete.append('fileNames', fileName);
+      };
+
       const host = headers().get("host");
       await fetch(`http://${host}/api/upload`, {
         method: 'DELETE',
-        body: JSON.stringify({ fileName: item?.images[0] }),
+        body: dataToDelete
       }); 
 
       await deleteOneItem(parseInt(params.id));

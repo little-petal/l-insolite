@@ -5,11 +5,38 @@ import { join } from "path";
 export async function POST (request: NextRequest) {  
   // Get the information from the request
   const data = await request.formData();
-  const file: File | null = data.get("file") as unknown as File;
+  const files: File[] | null = data.getAll('files') as unknown as File[];
 
-  if (!file) {
+  if (!files) {
     return NextResponse.json({ success: false })
   }
+
+  const fileNames = await Promise.all(
+    files.map((file) => WriteFile(file))
+  );
+
+  return NextResponse.json({ success: true, fileNames: fileNames });
+};
+
+export async function DELETE (request: NextRequest) {  
+  // Get the information from the request
+  const data = await request.formData();
+  const fileNames: string[] | null = data.getAll('fileNames') as unknown as string[];
+
+  // Delete the file
+  if (fileNames) {
+    fileNames.forEach(async (fileName) => {    
+      const path = join("./public/uploads/", fileName);
+      await unlink(path);
+    
+      });
+      return NextResponse.json({ success: true });
+  }
+  return NextResponse.json({ success: false })
+
+};
+
+async function WriteFile(file: File) {
 
   // Transform file in buffer
   const bytes = await file.arrayBuffer();
@@ -20,16 +47,5 @@ export async function POST (request: NextRequest) {
   const path = join("./public/uploads/", fileName);
   await writeFile(path, buffer);
 
-  return NextResponse.json({ success: true, fileName: fileName, path: path });
-};
-
-export async function DELETE (request: NextRequest) {  
-  // Get the information from the request
-  const data = await request.json();
-
-  // Delete the file
-  const path = join("./public/uploads/", data.fileName);
-  await unlink(path);
-
-  return NextResponse.json({ success: true });
+  return fileName;
 };
