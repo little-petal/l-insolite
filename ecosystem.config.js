@@ -1,6 +1,6 @@
 module.exports = {
   apps: [{
-    name: 'reve-novateur',
+    name: 'l-insolite',
     script: 'npm',
     args: 'start',
   }],
