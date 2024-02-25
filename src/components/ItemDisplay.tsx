@@ -15,8 +15,8 @@ export const ItemDisplay = ({title, description, price, type, images}: Props) =>
         <div className="relative p-3 h-full bg-stone-light rounded-lg">
             <div className="flex flex-col space-y-4 content-between h-full">
                 <Carousel className="rounded-xl h-3/4" placeholder={undefined}>
-                  {images.map((image) => (
-                    <img className="h-full w-full object-cover" src={images ? "/uploads/" + image : "assets/images/image-not-found.jpg"} alt="" />
+                  {images.map((image, index) => (
+                    <img key={index} className="h-full w-full object-cover" src={images ? "/uploads/" + image : "assets/images/image-not-found.jpg"} alt="" />
                   ))}
                 </Carousel>
                 <div className="grow flex flex-col space-y-4">

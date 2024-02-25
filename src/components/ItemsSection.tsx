@@ -39,7 +39,7 @@ export const ItemsSection = ({ items }: Props) => {
               {selectedItems?.sort((a, b) => (Number(b.createdAt) - Number(a.createdAt)))?.map((item) => (
                 <div
                   key={item.id}
-                  className="p-3 min-h-50 w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/4"
+                  className="p-3 min-h-32 w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/4"
                 >
                   <ItemDisplay
                     title={item.title}

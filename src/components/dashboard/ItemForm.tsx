@@ -116,8 +116,8 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
         <div className="flex flex-col space-x-3">
           <p>Importer une image :</p>
           <div className="flex flew-wrap p-3 min-h-50 w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/4">
-            {item?.images.map((image) => (
-              <img className="m-2 object-cover h-24 w-20 sm:h-52 sm:w-40" src={"/uploads/" + image} alt="" />
+            {item?.images.map((image, index) => (
+              <img key={index} className="m-2 object-cover h-24 w-20 sm:h-48 sm:w-40" src={"/uploads/" + image} alt="" />
             ))}
           </div>
           <label className="flex flex-row space-x-3">
