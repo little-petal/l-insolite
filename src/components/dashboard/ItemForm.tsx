@@ -3,6 +3,7 @@
 import { Item, Prisma, Type } from "@prisma/client";
 import { WriteItem } from "@/types/WriteItem";
 import { useState } from "react";
+import { ErrorDialog } from "./ErrorDialog";
 
 interface Props {
   item: Item | null;
@@ -13,26 +14,29 @@ interface Props {
 export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
   const [message, setMessage] = useState<string | null>(null);
   const [files, setFiles] = useState<FileList | null>();
+  const [openError, setOpenError] = useState(false);
+  const [error, setError] = useState("");
 
   async function handleSubmit(e: any) {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
+    try {
+      const formData = new FormData(e.target);
 
-    if (files)
-    {
-      try {
-
+      if (files)
+      {
         if (!isCreation && item)
         {
           const dataToDelete = new FormData()
           for (const fileName of item.images) {
             dataToDelete.append('fileNames', fileName);
           };
-          await fetch('/api/upload', {
+          const del = await fetch('/api/upload', {
             method: 'DELETE',
             body: dataToDelete
           });
+          // Handle the error
+          if (!del.ok) throw new Error("DELETE API UPLOAD : " + await del.text())
         }
         
         const data = new FormData();
@@ -45,20 +49,20 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
           method: 'POST',
           body: data
         });
-  
+        // Handle the error
+        if (!post.ok) throw new Error("POST API UPLOAD : " + await post.text())
+
         const response: { fileNames: string[] } = await post.json();
         onSubmit(convertFormDataToWriteItem(formData, response.fileNames));
 
-        // Handle the error
-        if (!post.ok) throw new Error(await post.text())
-      } catch (e: any) {
-        // Handle the error here
-        console.error(e);
+      } else {
+        onSubmit(convertFormDataToWriteItem(formData, item?.images ?? [""]));
       }
-    } else {
-      onSubmit(convertFormDataToWriteItem(formData, item?.images ?? [""]));
+      setMessage(isCreation ? "L'article a bien été créé." : "L'article a bien été modifié.")
+    } catch (e: any) {
+      setError(e.toString());
+      setOpenError(true);
     }
-    setMessage(isCreation ? "L'article a bien été créé." : "L'article a bien été modifié.")
   }
 
   function convertFormDataToWriteItem(formData: FormData, filenames : string[]): WriteItem {
@@ -83,6 +87,7 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
 
   return (
     <>
+      <ErrorDialog openError={openError} handleOpenError={() => setOpenError(!openError)} error={error} />
       <form className="flex flex-col space-y-3" method="post" onSubmit={handleSubmit}>
         <label className="flex flex-col">
           Titre de l&lsquo;article: <input type="text" name="title" defaultValue={item?.title} required={isCreation}/>
