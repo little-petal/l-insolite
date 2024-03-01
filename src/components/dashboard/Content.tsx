@@ -24,7 +24,7 @@ export const Content = ({ items }: Props) => {
 
   return (
     <>
-      <div className='flex p-6 justify-between items-center'>
+      <div className='flex p-2 sm:p-6 justify-between items-center'>
         <Link 
           className="text-md sm:text-lg bg-orange-200 border border-orange-600 p-6"
           href={'/dashboard/create'}
@@ -32,37 +32,37 @@ export const Content = ({ items }: Props) => {
         </Link>
         <div className="h-full flex justify-center items-center">
           <form className="flex space-x-4" method="post" onSubmit={onSubmit}>
-            <input type="number" name="searchId" value={searchId} onChange={(event) => {setSearchId(event.target.valueAsNumber)}} />
+            <input className="w-32 sm:w-60" type="number" name="searchId" value={searchId} onChange={(event) => {setSearchId(event.target.valueAsNumber)}} />
             <button type="submit">
               <img className="w-6 sm:w-10 h-6 sm:h-10" src={"/assets/icons/search.png"} alt="Rechercher" />
             </button>
           </form>
         </div>
       </div>
-      <div className='p-5'>
+      <div className='p-2 sm:p-6'>
         <div className="flex flex-col">
             {selectedItems?.sort((a, b) => (Number(a.createdAt) - Number(b.createdAt)))?.map((item) => (
             <div
               key={item.id}
-              className="w-full flex flex-row justify-between m-2 bg-emerald-medium"
+              className="w-full flex flex-row justify-between my-1 sm:m-2 bg-emerald-medium"
             >
-              <div className='flex justify-center'>
+              <div className='flex w-3/4 justify-start'>
                 <div className='pl-2 self-center w-8 sm:w-12'>
                   {item.published &&
-                   <img className="w-10 sm:w-10 h-6 sm:h-10" src={"/assets/icons/visible.png"} alt="Visible" />
+                   <img className="w-5 sm:w-10 h-5 sm:h-10" src={"/assets/icons/visible.png"} alt="Visible" />
                   }
                 </div>
-                <p className="w-24 sm:w-28 text-lg sm:text-xl justify-start mx-2 p-2 self-center bg-emerald-light border border-emerald-dark">Réf.{item.id}</p>
+                <p className="hidden sm:block w-24 sm:w-28 text-lg sm:text-xl justify-start mx-2 p-2 self-center bg-emerald-light border border-emerald-dark">Réf.{item.id}</p>
                 <p className="text-md sm:text-lg justify-start p-2 self-center">{item.title}</p>
               </div>
-              <div className="flex flex-row p-1 space-x-2">
+              <div className="flex flex-row w-1/4 p-1 space-x-2 justify-center sm:justify-end">
                 <Link 
-                  className="p-4"
+                  className="p-1 place-self-center"
                   href={'/dashboard/'+ item.id +'/update'}
                   ><img className="w-6 sm:w-10 h-6 sm:h-10" src={"/assets/icons/update.png"} alt="Modifier" />
                 </Link>
                 <Link 
-                  className="p-4"
+                  className="p-1 place-self-center"
                   href={'/dashboard/'+ item.id +'/delete'}
                   ><img className="w-6 sm:w-10 h-6 sm:h-10" src={"/assets/icons/delete.png"} alt="Supprimer" />
                 </Link>
