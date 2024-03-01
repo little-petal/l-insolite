@@ -1,6 +1,7 @@
 import { writeFile, unlink } from "fs/promises";
 import { NextRequest, NextResponse } from "next/server";
 import { join } from "path";
+import { env } from "process";
 
 export async function POST (request: NextRequest) {  
   // Get the information from the request
@@ -26,7 +27,7 @@ export async function DELETE (request: NextRequest) {
   // Delete the file
   if (fileNames) {
     fileNames.forEach(async (fileName) => {    
-      const path = join("./public/uploads/", fileName);
+      const path = join(env.UPLOAD_PATH ?? "", fileName);
       await unlink(path);
     
       });
@@ -44,7 +45,7 @@ async function WriteFile(file: File) {
 
   // Write the file
   const fileName = Math.round(Math.random() * 1e9).toString() + "_" + file.name;
-  const path = join("./public/uploads/", fileName);
+  const path = join(env.UPLOAD_PATH ?? "", fileName);
   await writeFile(path, buffer);
 
   return fileName;
