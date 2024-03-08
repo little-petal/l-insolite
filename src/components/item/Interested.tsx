@@ -10,7 +10,7 @@ export const Interested = ({ className }: Props) => {
   return (
     <div className={clsx("flex flex-1 place-content-center p-6 box-border border-stone-dark border-4 bg-stone-medium rounded-lg", className)}>
       <div className="flex flex-col w-full space-y-8 justify-self-center">
-        <p className="text-center text-2xl">Intéressé(e) par l&apos;article ? Vous pouvez me contacter !</p>
+        <p className="text-black text-center text-2xl">Intéressé(e) par l&apos;article ? Vous pouvez me contacter !</p>
         <div className="flex flex-col place-content-center space-y-2">
           <div className="flex flex-row space-x-4 place-content-center">
             <img
