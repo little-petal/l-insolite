@@ -11,7 +11,7 @@ export default async function Home() {
   return (
     <main className='bg-sable'>
       <section id="nav-landing-page" className='h-screen bg-cover bg-center bg-no-repeat bg-landing-page-sm md:bg-landing-page-md flex flex-col snap-always snap-start'>
-        <Header>L&lsquo;insolite</Header>
+        <Header isMainPage={true}/>
         <div className="flex justify-center md:justify-start space-x-1">
           <div className='flex absolute md:left-16 bottom-16'>
             <a className="flex text-sable" href="#nav-products">
