@@ -12,7 +12,7 @@ export const Content = ({ item }: Props) => {
   if (!item) {
     return (
       <div className="flex w-full h-full py-60 justify-center">
-        <p className="text-2xl sm:text-3xl lg:text-4xl font-inter p-2 text-center">L&apos;article n&apos;a pas été trouvé.</p>
+        <p className="text-black text-2xl sm:text-3xl lg:text-4xl font-inter p-2 text-center">L&apos;article n&apos;a pas été trouvé.</p>
       </div>
     )
   }
@@ -30,10 +30,10 @@ export const Content = ({ item }: Props) => {
         </div>
         <div className="flex flex-1 flex-col place-items-center p-6 bg-stone-medium rounded-lg">
           <div className="flex flex-col w-full xl:w-2/3 h-2/3 space-y-8 justify-self-center">
-            <p className="text-center text-4xl">{item.title}</p>
-            <p className="text-center text-2xl">{item.price + "€"}</p>
-            <p className="text-xl self-start bg-stone-dark p-2">{"Référence : " + item.id}</p>
-            <p className="text-center text-lg">{item.description}</p>
+            <p className="text-black text-center text-4xl">{item.title}</p>
+            <p className="text-black text-center text-2xl">{item.price + "€"}</p>
+            <p className="text-black text-xl self-start bg-stone-dark p-2">{"Référence : " + item.id}</p>
+            <p className="text-black text-center text-lg">{item.description}</p>
           </div>
           <Interested className="invisible xl:visible"/>
         </div>
