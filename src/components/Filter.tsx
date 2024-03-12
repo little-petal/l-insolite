@@ -14,7 +14,7 @@ export const Filter = ({type, filter}: Props) => {
         <img 
           className="w-8 h-8 md:w-10 md:h-10" 
           src={"/assets/icons/" + type.toLowerCase() + ".png"} 
-          alt={"2"+name}
+          alt={name}
         />
       </button>
     </Tooltip>

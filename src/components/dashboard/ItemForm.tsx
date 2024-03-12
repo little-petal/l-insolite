@@ -4,6 +4,8 @@ import { Item, Prisma, Type } from "@prisma/client";
 import { WriteItem } from "@/types/WriteItem";
 import { useState } from "react";
 import { ErrorDialog } from "./ErrorDialog";
+import { Help } from "./Help";
+import { Spinner } from "@material-tailwind/react";
 
 interface Props {
   item: Item | null;
@@ -16,11 +18,18 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
   const [files, setFiles] = useState<FileList | null>();
   const [openError, setOpenError] = useState(false);
   const [error, setError] = useState("");
+  const [inProcess, setInProcess] = useState(false);
 
   async function handleSubmit(e: any) {
     e.preventDefault();
 
+    for (let i = 0; i < 150; i++)
+    {
+      
+    
     try {
+      setInProcess(true);
+
       const formData = new FormData(e.target);
 
       if (files)
@@ -62,7 +71,11 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
     } catch (e: any) {
       setError(e.toString());
       setOpenError(true);
+      setInProcess(false);
+    } finally {
+      setInProcess(false);
     }
+  }
   }
 
   function convertFormDataToWriteItem(formData: FormData, filenames : string[]): WriteItem {
@@ -119,17 +132,25 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
           </label>
         </div>
         <div className="flex flex-col space-x-3">
-          <p>Importer une image :</p>
+          <div className="flex flex-row space-x-3">
+            <p>Importer une image :</p>
+            <Help>Les images doivent être dans l'idéal en format 4/3 et portrait. La taille de l'ensemble des images ne peut pas dépasser 75Mo.</Help>
+          </div>
           <div className="flex flew-wrap p-3 min-h-50 w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/4">
             {item?.images.map((image, index) => (
-              <img key={index} className="m-2 object-cover h-24 w-20 sm:h-48 sm:w-40" src={"/uploads/" + image ?? "assets/images/image-not-found.jpg"} alt="" />
+              <img key={index} className="m-2 object-cover h-40 w-32 sm:h-80 sm:w-60" src={"/uploads/" + image ?? "assets/images/image-not-found.jpg"} alt="" />
             ))}
           </div>
           <label className="flex flex-row space-x-3">
             <input type="file" name="file" accept="image/*" multiple onChange={(e) => setFiles(e.target.files)} required={isCreation} />
           </label>
         </div>
-        <button className="bg-orange-200 border border-orange-600 p-4" type="submit">Enregistrer l&lsquo;article</button>
+        <div className="flex flex-row space-x-3">
+          <button className="bg-orange-200 border border-orange-600 p-4" type="submit">Enregistrer l&lsquo;article</button>
+          {inProcess && (
+            <Spinner className="h-10 w-10" />
+          )}
+        </div>
       </form>
       {message && (
         <div>{message}</div>

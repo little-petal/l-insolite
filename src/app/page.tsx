@@ -21,7 +21,7 @@ export default async function Home() {
         </div>
       </section>
       <section id="nav-products">
-        <ItemsSection items={items}/>
+        <ItemsSection items={items.sort((a, b) => (Number(b.createdAt) - Number(a.createdAt)))}/>
       </section>
       <section id="nav-footer" className="bg-stone-dark relative h-screen snap-always snap-end flex flex-col">
         <p className="flex justify-center text-4xl sm:text-5xl lg:text-6xl font-georgia p-6">Qui sommes-nous ?</p>
