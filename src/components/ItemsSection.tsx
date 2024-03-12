@@ -49,7 +49,7 @@ export const ItemsSection = ({ items }: Props) => {
   return (
     <div className="relative">
       <div className="container mx-auto p-6 min-h-screen snap-always snap-start">
-        <div className="flex flex-row justify-between bg-red-200" >
+        <div className="flex flex-row justify-between" >
           <p className="text-4xl sm:text-5xl lg:text-6xl font-georgia p-2">Nos articles</p>
           <Pagination active={active} next={next} prev={prev} max={selectedItems ? Math.ceil(selectedItems.length/pagination) : 0 }/>
         </div>
