@@ -134,7 +134,7 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
         <div className="flex flex-col space-x-3">
           <div className="flex flex-row space-x-3">
             <p>Importer une image :</p>
-            <Help>Les images doivent être dans l'idéal en format 4/3 et portrait. La taille de l'ensemble des images ne peut pas dépasser 75Mo.</Help>
+            <Help>Les images doivent être dans l&apos;idéal en format 4/3 et portrait. La taille de l&apos;ensemble des images ne peut pas dépasser 75Mo.</Help>
           </div>
           <div className="flex flew-wrap p-3 min-h-50 w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/4">
             {item?.images.map((image, index) => (
