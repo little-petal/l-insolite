@@ -18,7 +18,7 @@ export const Header = ({ isMainPage }: Props) => {
             </div>
             <div className="basis-1/2 md:basis-1/4 flex justify-end space-x-1 p-5">
               <Icon src="facebook" link="https://www.facebook.com/bmcreation.ch/?locale=fr_FR"/>
-              <Icon src="email" link="mailto:mathurinmalin@gmail.com"/>
+              <Icon src="email" link="mailto:jolydecolombe70160@gmail.com"/>
               {isMainPage && 
                 <Icon src="go-down" link="#nav-footer"/>
               }

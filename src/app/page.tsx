@@ -23,15 +23,16 @@ export default async function Home() {
       <section id="nav-products">
         <ItemsSection items={items.sort((a, b) => (Number(b.createdAt) - Number(a.createdAt)))}/>
       </section>
-      <section id="nav-footer" className="bg-stone-dark relative h-screen snap-always snap-end flex flex-col">
+      <section id="nav-footer" className="bg-stone-dark relative min-h-screen snap-always snap-end flex flex-col">
         <p className="flex justify-center text-4xl sm:text-5xl lg:text-6xl font-georgia p-6">Qui sommes-nous ?</p>
-        <div className="flex flex-wrap justify-center items-center md:flex-row h-full w-full">
-          <div className="lg:basis-1/3 font-georgia flex flex-col justify-center p-6">
-            <p className='flex justify-center text-md sm:text-xl lg:text-2xl'>Boutique l&lsquo;Insolite</p>
-            <p className='flex justify-center text-md sm:text-xl lg:text-2xl'>JukeBox - Flipper - Antiquités - Objets insolites</p>
-            <p className='flex justify-center text-md sm:text-xl lg:text-2xl'>Achat et vente - Rénovation</p>
+        <div className="flex flex-1 justify-center items-center flex-col xl:flex-row h-full w-full">
+          <div className="font-georgia flex flex-col xl:basis-1/2 justify-center p-6 sm:p-8 md:p-12">
+            <p className='flex justify-center text-center text-lg sm:text-xl lg:text-2xl'>Martial, bientôt 40ans, je suis né dans une famille de collectionneurs, où le virus s&lsquo;est transmis.</p>
+            <p className='flex justify-center text-center text-lg sm:text-xl lg:text-2xl'>J&lsquo;aime chiner, j&lsquo;ai le sens du contact et je suis toujours ouvert à la discussion.</p>
+            <p className='flex justify-center text-center text-lg sm:text-xl lg:text-2xl'>Je parcours brocantes et nouveaux lieux à la recherche d&lsquo;objets originaux.</p>
+            <p className='flex justify-center text-center text-lg sm:text-xl lg:text-2xl'>Visitez les pages du site à la recherche de votre objet coup de cœur!</p>
           </div>
-          <div className="lg:basis-2/3 flex justify-center">
+          <div className="flex xl:basis-1/2 justify-center">
             <img className="object-cover" src="/assets/images/about-us.jpg" alt="" />
           </div>
         </div>

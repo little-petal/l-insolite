@@ -24,7 +24,7 @@ export const Interested = ({ className }: Props) => {
               src="/assets/icons/email-black.png"
               alt="E-mail"
               className="object-scale-down w-[40px]" /> 
-            <p className="self-center text-black text-xl md:text-2xl font-inter">mathurinmalin@gmail.com</p>
+            <p className="self-center text-black text-xl md:text-2xl font-inter">jolydecolombe70160@gmail.com</p>
           </div>
         </div>
       </div>
