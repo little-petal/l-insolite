@@ -2,15 +2,35 @@
 
 import { Item } from "@prisma/client";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Pagination } from "../Pagination";
 
 interface Props {
   items: Item[] | null;
 }
 
 export const Content = ({ items }: Props) => {
+  const pagination = 20;
+  const [active, setActive] = useState(1);
   const [selectedItems, setSelectedItems] = useState(items as Item[]);
   const [searchId, setSearchId] = useState<number>();
+  const [paginatedItems, setPaginatedItems] = useState(selectedItems.slice(active-1, pagination) as Item[]);
+
+  useEffect(() => {
+    setPaginatedItems(selectedItems.slice((active-1)*pagination, active*pagination));
+  })
+  const next = () => {
+    if (!items || items?.length == 0) return;
+    if (active === items.length/pagination) return;
+
+    setActive(active + 1);
+  };
+
+  const prev = () => {
+    if (active === 1) return;
+
+    setActive(active - 1);
+  };
 
   async function onSubmit(e: any) {
     e.preventDefault();
@@ -18,6 +38,7 @@ export const Content = ({ items }: Props) => {
     if (!searchId) {
       setSelectedItems(items as Item[]);
     } else {
+      setActive(1);
       setSelectedItems(items?.filter((x) => x.id == searchId) as Item[]);
     }
   }
@@ -41,7 +62,7 @@ export const Content = ({ items }: Props) => {
       </div>
       <div className='p-2 sm:p-6'>
         <div className="flex flex-col">
-            {selectedItems?.sort((a, b) => (Number(a.createdAt) - Number(b.createdAt)))?.map((item) => (
+            {paginatedItems?.map((item) => (
             <div
               key={item.id}
               className="w-full flex flex-row justify-between my-1 sm:m-2 bg-emerald-medium"
@@ -69,6 +90,9 @@ export const Content = ({ items }: Props) => {
               </div>
             </div>
           ))}
+          <div className="self-center">
+            <Pagination active={active} next={next} prev={prev} max={selectedItems ? Math.ceil(selectedItems.length/pagination) : 0 }/>
+          </div>
         </div>
       </div>
     </>

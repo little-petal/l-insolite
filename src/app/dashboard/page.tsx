@@ -10,7 +10,7 @@ export default async function Dashboard() {
   return (
     <main className='bg-emerald-light min-h-screen'>
       <Header isMainPage={true} isRegister={false}/>
-      <Content items={items}/>
+      <Content items={items?.sort((a, b) => (Number(a.createdAt) - Number(b.createdAt)))}/>
     </main>
   )
 }
