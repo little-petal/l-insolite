@@ -17,8 +17,8 @@ export const ItemsSection = ({ items }: Props) => {
   const [paginatedItems, setPaginatedItems] = useState(selectedItems.slice(active-1, pagination) as Item[]);
 
   useEffect(() => {
-    setPaginatedItems(selectedItems.slice((active-1)*pagination, active*pagination));
-  })
+    setPaginatedItems(() => selectedItems.slice((active-1)*pagination, active*pagination));
+  }, [])
 
   const next = () => {
     if (!items || items?.length == 0) return;
