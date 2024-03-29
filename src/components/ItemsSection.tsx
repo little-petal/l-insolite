@@ -17,7 +17,7 @@ export const ItemsSection = ({ items }: Props) => {
   const [paginatedItems, setPaginatedItems] = useState(selectedItems.slice(active-1, pagination) as Item[]);
 
   useEffect(() => {
-    setPaginatedItems(() => selectedItems.slice((active-1)*pagination, active*pagination));
+    setPaginatedItems(selectedItems.slice((active-1)*pagination, active*pagination));
   }, [])
 
   const next = () => {
@@ -25,12 +25,14 @@ export const ItemsSection = ({ items }: Props) => {
     if (active === items.length/pagination) return;
  
     setActive(active + 1);
+    setPaginatedItems(selectedItems.slice((active)*pagination, (active + 1)*pagination));
   };
  
   const prev = () => {
     if (active === 1) return;
  
     setActive(active - 1);
+    setPaginatedItems(selectedItems.slice((active-2)*pagination, (active - 1)*pagination));
   };
     
   function filterItems(type: string) {
@@ -39,10 +41,12 @@ export const ItemsSection = ({ items }: Props) => {
     {
       setActive(1);
       setSelectedItems(items);
+      setPaginatedItems(items.slice(0, pagination));
     } else {
       const i = selectedItems.find((x) => x.type === type);
       setActive(1);
       setSelectedItems(items.filter((x) => (x.type as string) === type));
+      setPaginatedItems(items.filter((x) => (x.type as string) === type).slice(0, pagination));
     }
   }
 
