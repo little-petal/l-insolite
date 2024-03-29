@@ -18,18 +18,21 @@ export const Content = ({ items }: Props) => {
 
   useEffect(() => {
     setPaginatedItems(selectedItems.slice((active-1)*pagination, active*pagination));
-  })
+  }, [])
+
   const next = () => {
     if (!items || items?.length == 0) return;
     if (active === items.length/pagination) return;
 
     setActive(active + 1);
+    setPaginatedItems(selectedItems.slice((active)*pagination, (active + 1)*pagination));
   };
 
   const prev = () => {
     if (active === 1) return;
 
     setActive(active - 1);
+    setPaginatedItems(selectedItems.slice((active-2)*pagination, (active - 1)*pagination));
   };
 
   async function onSubmit(e: any) {
