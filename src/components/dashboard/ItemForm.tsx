@@ -172,7 +172,7 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
           <DragDropContext onDragEnd={handleOnDragImages}>
             <Droppable droppableId="droppable-images" direction="horizontal">
               {(provided) => (
-                <div className="flex flex-wrap flex-row p-3" ref={provided.innerRef} {...provided.droppableProps}>
+                <div className="flex flex-row p-3" ref={provided.innerRef} {...provided.droppableProps}>
                   {images?.map((image, index) => (
                     <Draggable key={"draggable-images-" + index} draggableId={"draggable-images-" + index} index={index}>
                       {(provided) => (
@@ -193,7 +193,7 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
           <DragDropContext onDragEnd={handleOnDragFiles}>
             <Droppable droppableId="droppable-files" direction="horizontal">
               {(provided) => (
-                <div className="flex flex-row flex-wrap" ref={provided.innerRef} {...provided.droppableProps}>
+                <div className="flex flex-row" ref={provided.innerRef} {...provided.droppableProps}>
                   {files && files.map((file, index) => (
                     <Draggable key={"draggable-files-" + index} draggableId={"draggable-files-" + index} index={index}>
                       {(provided) => (
