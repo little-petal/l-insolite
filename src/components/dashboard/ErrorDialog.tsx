@@ -10,17 +10,16 @@ interface Props {
 
 export const ErrorDialog = ({ openError, handleOpenError, error }: Props) => {
   return (
-    <Dialog open={openError} handler={handleOpenError} placeholder={undefined}>
-      <DialogHeader placeholder={undefined}>Erreur</DialogHeader>
-      <DialogBody placeholder={undefined}>{error}</DialogBody>
-      <DialogFooter placeholder={undefined}>
+    <Dialog open={openError} handler={handleOpenError} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+      <DialogHeader placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Erreur</DialogHeader>
+      <DialogBody placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{error}</DialogBody>
+      <DialogFooter placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
         <Button
           variant="text"
           color="red"
           onClick={handleOpenError}
           className="mr-1"
-          placeholder={undefined}
-        >
+          placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}        >
           <span>Cancel</span>
         </Button>
       </DialogFooter>

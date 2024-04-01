@@ -185,7 +185,7 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
         <div className="flex flex-row space-x-3">
           <button className="bg-orange-200 border border-orange-600 p-4" type="submit">Enregistrer l&lsquo;article</button>
           {inProcess && (
-            <Spinner className="h-10 w-10" />
+            <Spinner className="h-10 w-10" onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
           )}
         </div>
       </form>

@@ -22,7 +22,7 @@ export const Content = ({ item }: Props) => {
     <div className="flex h-full w-full flex-col space-y-4 px-3 lg:px-24 pb-12 p-3 sm:p-6">
       <div className="flex place-items-stretch flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
         <div className="flex w-full md:w-[420px] xl:w-[580px]">
-          <Carousel className="rounded-lg h-full" placeholder={undefined}>
+          <Carousel className="rounded-lg h-full" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
             {item.images.map((image, index) => (
               <img key={index} className="h-full w-full object-cover" src={"/uploads/" + image ?? "assets/images/image-not-found.jpg"} alt="" />
             ))}

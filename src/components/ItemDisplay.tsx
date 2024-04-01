@@ -16,7 +16,7 @@ export const ItemDisplay = ({id, title, description, price, type, images}: Props
     return (
         <div className="relative p-3 h-fit bg-stone-light rounded-lg">
             <div className="flex flex-col space-y-4 content-between h-full">
-                <Carousel className="rounded-xl h-96" placeholder={undefined}>
+                <Carousel className="rounded-xl h-96" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                   {images.map((image, index) => (
                     <img key={index} className="h-full w-full object-cover" src={"/uploads/" + image ?? "assets/images/image-not-found.jpg"} alt="" />
                   ))}
