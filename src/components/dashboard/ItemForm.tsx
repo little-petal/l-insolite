@@ -16,6 +16,7 @@ interface Props {
 
 export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
   const [message, setMessage] = useState<string | null>(null);
+  const [images, setImages] = useState<string[] | null>(item?.images ?? null);
   const [files, setFiles] = useState<File[] | null>();
   const [openError, setOpenError] = useState(false);
   const [error, setError] = useState("");
@@ -23,7 +24,6 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
 
   async function handleSubmit(e: any) {
     e.preventDefault();
-
         
     try {
       setInProcess(true);
@@ -32,10 +32,10 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
 
       if (files)
       {
-        if (!isCreation && item)
+        if (!isCreation && images)
         {
           const dataToDelete = new FormData()
-          for (const fileName of item.images) {
+          for (const fileName of images) {
             dataToDelete.append('fileNames', fileName);
           };
           const del = await fetch('/api/upload', {
@@ -63,7 +63,7 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
         onSubmit(convertFormDataToWriteItem(formData, response.fileNames));
 
       } else {
-        onSubmit(convertFormDataToWriteItem(formData, item?.images ?? [""]));
+        onSubmit(convertFormDataToWriteItem(formData, images ?? [""]));
       }
       setMessage(isCreation ? "L'article a bien été créé." : "L'article a bien été modifié.")
     } catch (e: any) {
@@ -95,7 +95,21 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
     return writeItem;
   }
 
-  function handleOnDragEnd(result: DropResult): void {
+  function handleOnDragImages(result: DropResult): void {
+    if (!images || !result.destination) {
+      return;
+    }
+
+    const reorderedImages = reorder(
+      images,
+      result.source.index,
+      result.destination.index
+    );
+
+    setImages(reorderedImages);
+  }
+
+  function handleOnDragFiles(result: DropResult): void {
     if (!files || !result.destination) {
       return;
     }
@@ -109,7 +123,7 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
     setFiles(reorderedFiles);
   }
 
-  const reorder = (list: File[], startIndex: number, endIndex: number): File[] => {
+  const reorder = (list: any[], startIndex: number, endIndex: number): any[] => {
     const result = Array.from(list);
     const [removed] = result.splice(startIndex, 1);
     result.splice(endIndex, 0, removed);
@@ -155,22 +169,35 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
             <p>Importer une image :</p>
             <Help>Les images doivent être dans l&apos;idéal en format 4/3 et portrait. La taille de l&apos;ensemble des images ne peut pas dépasser 75Mo.</Help>
           </div>
-          <div className="flex flex-wrap flex-row p-3">
-            {item?.images.map((image, index) => (
-              <img key={index} className="m-2 object-cover h-40 w-32 sm:h-80 sm:w-60" src={"/uploads/" + image ?? "assets/images/image-not-found.jpg"} alt="" />
-            ))}
-          </div>
+          <DragDropContext onDragEnd={handleOnDragImages}>
+            <Droppable droppableId="droppable-images" direction="horizontal">
+              {(provided) => (
+                <div className="flex flex-wrap flex-row p-3" ref={provided.innerRef} {...provided.droppableProps}>
+                  {images?.map((image, index) => (
+                    <Draggable key={"draggable-images-" + index} draggableId={"draggable-images-" + index} index={index}>
+                      {(provided) => (
+                        <div className={"draggable-images-" + index} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                          <img key={index} className="m-2 object-cover h-40 w-32 sm:h-80 sm:w-60" src={"/uploads/" + image ?? "assets/images/image-not-found.jpg"} alt="" />
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </DragDropContext>
           <label className="flex flex-row space-x-3">
             <input type="file" name="file" accept="image/*" multiple onChange={(e) => setFiles(e.target.files ? Array.from(e.target.files) : null)} required={isCreation} />
           </label>
-          <DragDropContext onDragEnd={handleOnDragEnd}>
-            <Droppable droppableId="droppable" direction="horizontal">
+          <DragDropContext onDragEnd={handleOnDragFiles}>
+            <Droppable droppableId="droppable-files" direction="horizontal">
               {(provided) => (
                 <div className="flex flex-row flex-wrap" ref={provided.innerRef} {...provided.droppableProps}>
                   {files && files.map((file, index) => (
-                    <Draggable key={"draggable-" + index} draggableId={"draggable-" + index} index={index}>
+                    <Draggable key={"draggable-files-" + index} draggableId={"draggable-files-" + index} index={index}>
                       {(provided) => (
-                        <div className={"draggable-" + index} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                        <div className={"draggable-files-" + index} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                           <img className="m-2 object-cover h-40 w-32 sm:h-80 sm:w-60" src={URL.createObjectURL(file)} alt="" />
                         </div>
                       )}
