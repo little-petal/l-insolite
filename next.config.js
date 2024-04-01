@@ -4,12 +4,7 @@
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'linsolitebrocante.com'
-      }
-    ],
+    domains: ['linsolitebrocante.com']
   },
   async headers() {
       return [
