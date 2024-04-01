@@ -5,7 +5,7 @@ import { Icon } from "./Icon"
 export const Footer = () => {
     return  (
         <div className="flex flex-row bottom-0 left-0 right-0 p-5 bg-red-900">
-            <div className="basis-1/2 md:basis-1/4 font-georgia md:font-inter">
+            <div className="basis-1/2 md:basis-1/4 font-cambria md:font-inter">
               <Information/>
             </div>
             <div className="invisible md:visible basis-0 md:basis-1/2 flex justify-center flex item-stretch">

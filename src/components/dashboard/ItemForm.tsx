@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { Item, Prisma, Type } from "@prisma/client";
 import { WriteItem } from "@/types/WriteItem";
 import { useState } from "react";
@@ -177,7 +178,12 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
                     <Draggable key={"draggable-images-" + index} draggableId={"draggable-images-" + index} index={index}>
                       {(provided) => (
                         <div className={"draggable-images-" + index} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                          <img key={index} className="m-2 object-cover h-20 w-16 sm:h-40 sm:w-32 md:h-80 md:w-60" src={"/uploads/" + image ?? "assets/images/image-not-found.jpg"} alt="" />
+                          <Image 
+                            className="m-2 object-cover h-20 w-16 sm:h-40 sm:w-32 md:h-80 md:w-60" 
+                            src={"/uploads/" + image ?? "assets/images/image-not-found.jpg"} 
+                            height={320} 
+                            width={240} 
+                            alt={image} />
                         </div>
                       )}
                     </Draggable>
@@ -198,7 +204,12 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
                     <Draggable key={"draggable-files-" + index} draggableId={"draggable-files-" + index} index={index}>
                       {(provided) => (
                         <div className={"draggable-files-" + index} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                          <img className="m-2 object-cover h-20 w-16 sm:h-40 sm:w-32 md:h-80 md:w-60" src={URL.createObjectURL(file)} alt="" />
+                          <Image 
+                            className="m-2 object-cover h-20 w-16 sm:h-40 sm:w-32 md:h-80 md:w-60" 
+                            src={URL.createObjectURL(file)} 
+                            height={320} 
+                            width={240} 
+                            alt={file.name} />
                         </div>
                       )}
                     </Draggable>

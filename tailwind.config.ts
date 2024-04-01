@@ -14,9 +14,16 @@ const config: Config = {
         'landing-page-sm': "url('/assets/images/landing-page-sm.jpg')"
       },
       fontFamily: {
-        // 'georgia': ['Georgia'],
-        'georgia': ['Cambria'],
-        'inter': ['Inter']
+        'georgia': ['Georgia'],
+        'cambria': ['Cambria'],
+        'inter': ['Inter'], //Fin
+        'bebas': ['"Bebas Neue"'],
+        'bellaza': ['Belleza'], //Fin
+        'bevan': ['Bevan'],
+        'cantata': ['"Cantata One"'],
+        'caudex': ['Caudex'],
+        'league': ['"League Gothic"'],
+        'oswald': ['Oswald']
       },
       colors: {
         'sable' : '#d4cbc6',
