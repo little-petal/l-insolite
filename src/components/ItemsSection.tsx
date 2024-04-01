@@ -84,7 +84,7 @@ export const ItemsSection = ({ items }: Props) => {
           }
         </div>
       </div>
-      <div className="flex flex-wrap sm:flex-nowrap md:flex-row justify-center content-end space-x-0 sm:space-x-3 md:space-x-6 h16 md:h-16 bg-red-900 sticky bottom-0 left-0 right-0 z-50 snap-always snap-end">
+      <div className="flex flex-wrap sm:flex-nowrap md:flex-row justify-center content-end space-x-0 sm:space-x-3 md:space-x-6 h16 md:h-16 bg-red-900 sticky bottom-0 left-0 right-0 z-50 snap-normal snap-end">
         <div className="flex space-x-6 sm:space-x-3 md:space-x-6">
           <Filter type="ALL" filter={filterItems} />
           <Filter type="TABLEAU" filter={filterItems} />

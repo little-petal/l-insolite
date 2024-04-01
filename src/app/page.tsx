@@ -23,7 +23,7 @@ export default async function Home() {
       <section id="nav-products">
         <ItemsSection items={items.sort((a, b) => (Number(b.createdAt) - Number(a.createdAt)))}/>
       </section>
-      <section id="nav-footer" className="bg-stone-dark relative min-h-screen snap-always snap-end flex flex-col">
+      <section id="nav-footer" className="bg-stone-dark relative min-h-screen snap-normal snap-end flex flex-col">
         <p className="flex justify-center text-center text-4xl sm:text-5xl lg:text-6xl font-cambria p-6">Qui sommes-nous ?</p>
         <div className="flex flex-1 justify-center items-center flex-col xl:flex-row h-full w-full">
           <div className="font-inter flex xl:basis-1/2 justify-end p-4 sm:p-4 sm:p-2 md:p-8">
@@ -35,7 +35,7 @@ export default async function Home() {
             </div>
           </div>
           <div className="flex xl:basis-1/2 justify-center xl:justify-start w-full sm:w-[500px] md:w-full p-4 sm:p-0 py-4 sm:pb-4">
-            <img className="object-cover md:rounded-lg" src="/assets/images/about-us.jpg" alt="" />
+            <img className="object-cover rounded-lg shadow-2xl" src="/assets/images/about-us.jpg" alt="" />
           </div>
         </div>
         <Footer/>
