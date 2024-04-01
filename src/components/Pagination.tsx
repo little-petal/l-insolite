@@ -11,7 +11,7 @@ interface Props {
 
 export function Pagination({active, next, prev, max} : Props) { 
   return (
-    <div className="flex justify-center items-center gap-2 sm:gap-4 md:gap-8">
+    <div className="flex justify-center items-center p-8 gap-2 sm:gap-4 md:gap-8">
       <IconButton
         size="sm"
         variant="outlined"

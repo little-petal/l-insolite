@@ -55,7 +55,6 @@ export const ItemsSection = ({ items }: Props) => {
       <div className="container mx-auto p-2 min-h-screen">
         <div className="flex flex-col sm:flex-row items-center sm:justify-between space-y-4 px-1 sm:px-5" >
           <p className="text-4xl sm:text-5xl lg:text-6xl font-cambria p-2">Nos articles</p>
-          <Pagination active={active} next={next} prev={prev} max={selectedItems ? Math.ceil(selectedItems.length/pagination) : 0 }/>
         </div>
         {!paginatedItems || paginatedItems.length == 0 && 
           <div className="flex w-full h-full py-60 justify-center">
