@@ -16,13 +16,7 @@ const nextConfig = {
         hostname: 'linsolitebrocante.com',
         port: '',
         pathname: '**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'linsolitebrocante.com',
-        port: '',
-        pathname: '',
-      },
+      }
     ],
   },
   async headers() {
