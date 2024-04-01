@@ -172,12 +172,12 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
           <DragDropContext onDragEnd={handleOnDragImages}>
             <Droppable droppableId="droppable-images" direction="horizontal">
               {(provided) => (
-                <div className="flex flex-row p-3" ref={provided.innerRef} {...provided.droppableProps}>
+                <div className="flex flex-row" ref={provided.innerRef} {...provided.droppableProps}>
                   {images?.map((image, index) => (
                     <Draggable key={"draggable-images-" + index} draggableId={"draggable-images-" + index} index={index}>
                       {(provided) => (
                         <div className={"draggable-images-" + index} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                          <img key={index} className="m-2 object-cover h-40 w-32 sm:h-80 sm:w-60" src={"/uploads/" + image ?? "assets/images/image-not-found.jpg"} alt="" />
+                          <img key={index} className="m-2 object-cover h-20 w-16 sm:h-40 sm:w-32 md:h-80 md:w-60" src={"/uploads/" + image ?? "assets/images/image-not-found.jpg"} alt="" />
                         </div>
                       )}
                     </Draggable>
@@ -198,7 +198,7 @@ export const ItemForm = ({ item, onSubmit, isCreation }: Props) => {
                     <Draggable key={"draggable-files-" + index} draggableId={"draggable-files-" + index} index={index}>
                       {(provided) => (
                         <div className={"draggable-files-" + index} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                          <img className="m-2 object-cover h-40 w-32 sm:h-80 sm:w-60" src={URL.createObjectURL(file)} alt="" />
+                          <img className="m-2 object-cover h-20 w-16 sm:h-40 sm:w-32 md:h-80 md:w-60" src={URL.createObjectURL(file)} alt="" />
                         </div>
                       )}
                     </Draggable>
