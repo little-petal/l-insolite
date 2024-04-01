@@ -52,9 +52,9 @@ export const ItemsSection = ({ items }: Props) => {
 
   return (
     <div className="relative">
-      <div className="container mx-auto p-6 min-h-screen snap-always snap-start">
-        <div className="flex flex-col sm:flex-row items-center sm:justify-between p-3" >
-          <p className="text-5xl lg:text-6xl font-cambria p-2">Nos articles</p>
+      <div className="container mx-auto p-2 min-h-screen snap-always snap-start">
+        <div className="flex flex-col sm:flex-row items-center sm:justify-between space-y-4 px-1 sm:px-5" >
+          <p className="text-4xl sm:text-5xl lg:text-6xl font-cambria p-2">Nos articles</p>
           <Pagination active={active} next={next} prev={prev} max={selectedItems ? Math.ceil(selectedItems.length/pagination) : 0 }/>
         </div>
         {!paginatedItems || paginatedItems.length == 0 && 
@@ -62,7 +62,7 @@ export const ItemsSection = ({ items }: Props) => {
             <p className="text-2xl sm:text-3xl lg:text-4xl font-inter p-2 text-center">Aucun article disponible.</p>
           </div>
         }
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap p-3">
           {paginatedItems &&
             <Suspense fallback={<div>Loading...</div>}>
               {paginatedItems?.map((item) => (
