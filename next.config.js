@@ -6,16 +6,8 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-          protocol: 'https',
-          hostname: 'linsolitebrocante.com',
-          port: '',
-          pathname: '/uploads/**',
-      },
-      {
         protocol: 'https',
-        hostname: 'linsolitebrocante.com',
-        port: '',
-        pathname: '**',
+        hostname: 'linsolitebrocante.com'
       }
     ],
   },
