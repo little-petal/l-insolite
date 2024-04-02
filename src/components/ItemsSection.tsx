@@ -67,7 +67,7 @@ export const ItemsSection = ({ items }: Props) => {
               {paginatedItems?.map((item) => (
                 <div
                   key={item.id}
-                  className="p-3 min-h-32 w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/4"
+                  className="flex justify-center p-3 min-h-32 w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/4"
                 >
                   <ItemDisplay
                     id={item.id}
