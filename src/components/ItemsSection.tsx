@@ -52,7 +52,7 @@ export const ItemsSection = ({ items }: Props) => {
 
   return (
     <div className="relative">
-      <div className="container mx-auto p-2 min-h-screen snap-always snap-start">
+      <div className="container mx-auto p-2 min-h-screen sm:snap-always sm:snap-start">
         <div className="flex flex-col sm:flex-row items-center sm:justify-between space-y-4 px-1 sm:px-5" >
           <p className="text-4xl sm:text-5xl lg:text-6xl font-cambria p-2">Nos articles</p>
         </div>
@@ -83,7 +83,7 @@ export const ItemsSection = ({ items }: Props) => {
           }
         </div>
         <Pagination active={active} next={next} prev={prev} max={selectedItems ? Math.ceil(selectedItems.length/pagination) : 0 }/>
-        <div className="snap-always h-20 sm:h-12 snap-end"></div>
+        <div className="sm:snap-always h-20 sm:h-12 sm:snap-end"></div>
       </div>
       <div className="flex flex-wrap sm:flex-nowrap md:flex-row justify-center content-end space-x-0 sm:space-x-3 md:space-x-6 h16 md:h-16 bg-red-900 sticky bottom-0 left-0 right-0 z-50">
         <div className="flex space-x-6 sm:space-x-3 md:space-x-6">

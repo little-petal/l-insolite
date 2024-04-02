@@ -10,7 +10,7 @@ export default async function Home() {
 
   return (
     <main className='bg-sable'>
-      <section id="nav-landing-page" className='h-screen bg-cover bg-center bg-no-repeat bg-landing-page-sm md:bg-landing-page-md flex flex-col snap-start'>
+      <section id="nav-landing-page" className='h-screen bg-cover bg-center bg-no-repeat bg-landing-page-sm md:bg-landing-page-md flex flex-col sm:snap-start'>
         <Header isMainPage={true}/>
         <div className="flex justify-center md:justify-start space-x-1">
           <div className='flex absolute md:left-16 bottom-16'>
@@ -23,7 +23,7 @@ export default async function Home() {
       <section id="nav-products">
         <ItemsSection items={items.sort((a, b) => (Number(b.createdAt) - Number(a.createdAt)))}/>
       </section>
-      <section id="nav-footer" className="bg-stone-dark relative min-h-screen flex flex-col snap-end">
+      <section id="nav-footer" className="bg-stone-dark relative min-h-screen flex flex-col sm:snap-end">
         <p className="flex justify-center text-center text-4xl sm:text-5xl lg:text-6xl font-cambria p-6">Qui sommes-nous ?</p>
         <div className="flex flex-1 justify-center items-center flex-col xl:flex-row h-full w-full">
           <div className="font-inter flex xl:basis-1/2 justify-end p-4 sm:p-4 sm:p-2 md:p-8">
