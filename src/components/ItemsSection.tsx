@@ -83,7 +83,7 @@ export const ItemsSection = ({ items }: Props) => {
           }
         </div>
         <Pagination active={active} next={next} prev={prev} max={selectedItems ? Math.ceil(selectedItems.length/pagination) : 0 }/>
-        <div className="sm:snap-always h-20 sm:h-12 sm:snap-end"></div>
+        <div className="sm:snap-always h-2 sm:h-12 sm:snap-end"></div>
       </div>
       <div className="flex flex-wrap sm:flex-nowrap md:flex-row justify-center content-end space-x-0 sm:space-x-3 md:space-x-6 h16 md:h-16 bg-red-900 sticky bottom-0 left-0 right-0 z-50">
         <div className="flex space-x-6 sm:space-x-3 md:space-x-6">
