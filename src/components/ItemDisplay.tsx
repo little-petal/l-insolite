@@ -1,5 +1,4 @@
 import { Prisma, $Enums } from "@prisma/client/index"
-import Image from 'next/image'
 import Link from "next/link";
 
 interface Props {
@@ -16,11 +15,9 @@ export const ItemDisplay = ({id, title, description, price, type, images}: Props
     return (
         <div className="relative p-4 h-fit bg-stone-light rounded-md">
             <div className="flex flex-col space-y-4 content-between h-full h-96">
-              <Image 
+              <img 
                 className="h-full w-full object-cover rounded-lg" 
                 src={"/uploads/" + images[0] ?? "assets/images/image-not-found.jpg"}
-                height={400} 
-                width={300} 
                 alt={images[0]} />
               <div className="grow flex flex-col space-y-4 h-24">
                 <Link 
